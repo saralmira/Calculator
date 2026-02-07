@@ -12,5 +12,6 @@ TestResults
 *.msi
 *.chm
 *.dbmdl
+*.vs
 /Package
 /Tools
