@@ -1,36 +1,56 @@
+using LoreSoft.Calculator.Properties;
+using LoreSoft.MathExpressions;
+using LoreSoft.MathExpressions.Metadata;
+using LoreSoft.MathExpressions.UnitConversion;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Reflection;
-using LoreSoft.Calculator.Properties;
-using LoreSoft.MathExpressions;
-using LoreSoft.MathExpressions.UnitConversion;
-using LoreSoft.MathExpressions.Metadata;
 
 namespace LoreSoft.Calculator
 {
     public partial class CalculatorForm : Form
     {
+        struct HistoryData
+        {
+            public string Expression;
+            public bool Success;
+            public bool Regular;
+        }
+
+        private const string tabSpace = "\t\t\t";
         private MathEvaluator _eval = new MathEvaluator();
-        private List<string> _history = new List<string>();
+        private List<HistoryData> _history = new List<HistoryData>();
         private int _historyIndex = 0;
         private Stopwatch watch = new Stopwatch();
+        private VariablesForm vform = new VariablesForm();
+        private bool lockTextChange = false;
 
         public CalculatorForm()
         {
             InitializeComponent();
             InitializeSettings();
             Application.Idle += new EventHandler(OnApplicationIdle);
+            vform.Owner = this;
+            vform.Show();
+            vform.Location = new Point(Location.X + Width, Location.Y);
+            timer1.Stop();
+
+            if (historyRichTextBox.Text.Length > 0)
+                EvaluateRichTextBox();
         }
 
         private void InitializeSettings()
         {
             SuspendLayout();
+
             if (Settings.Default["CalculatorLocation"] != null)
                 Location = Settings.Default.CalculatorLocation;
             if (Settings.Default["CalculatorSize"] != null)
@@ -41,6 +61,8 @@ namespace LoreSoft.Calculator
                 historyRichTextBox.Font = Settings.Default.HistoryFont;
             if (Settings.Default["InputFont"] != null)
                 inputTextBox.Font = Settings.Default.InputFont;
+            if (Settings.Default["HistoryText"] != null)
+                historyRichTextBox.Text = Settings.Default.HistoryText;
 
             replaceCalculatorToolStripMenuItem.Checked = (Application.ExecutablePath.Equals(
                 ImageFileOptions.GetDebugger(CalculatorConstants.WindowsCalculatorName),
@@ -71,21 +93,187 @@ namespace LoreSoft.Calculator
 
         private void SetInputFromHistory()
         {
-            inputTextBox.Text = _history[_historyIndex];
+            inputTextBox.Text = _history[_historyIndex].Expression;
             inputTextBox.Select(inputTextBox.TextLength, 0);
             inputTextBox.Focus();
         }
 
+        private bool Lock() { if (lockTextChange) return false; lockTextChange = true; return true; }
+        private void Unlock() { lockTextChange = false; }
+
+        private void AppendData(HistoryData data, string answer)
+        {
+            bool success = data.Success;
+
+            if (!data.Regular)
+            {
+                var variableName = data.Expression.Trim();
+                int id = variableName.IndexOf('=');
+                if (id > -1)
+                    variableName = variableName.Substring(0, id).Trim();
+
+                success = GetVariables().TryGetValue(variableName, out var value);
+                answer = value.ToString();
+            }
+
+            AppendData(data.Expression, success, answer);
+        }
+
+        private int AppendData(string expression, bool success, string answer)
+        {
+            int oldLength = historyRichTextBox.Text.Length;
+            historyRichTextBox.AppendText(expression);
+            // historyRichTextBox.AppendText(Environment.NewLine);
+            historyRichTextBox.AppendText(tabSpace);
+            if (!success)
+                historyRichTextBox.SelectionColor = Color.Maroon;
+            else
+                historyRichTextBox.SelectionColor = Color.Blue;
+            historyRichTextBox.SelectionFont = new Font(historyRichTextBox.Font, FontStyle.Bold);
+            historyRichTextBox.AppendText(answer);
+            historyRichTextBox.AppendText(Environment.NewLine);
+            return historyRichTextBox.Text.Length - oldLength;
+        }
+
+        public void EvaluateAll(bool shouldLock = false)
+        {
+            if (shouldLock)
+            {
+                if (!Lock())
+                    return;
+            }
+
+            historyRichTextBox.SuspendLayout();
+
+            historyRichTextBox.ResetText();
+
+            foreach (HistoryData data in _history)
+            {
+                if (data.Regular)
+                {
+                    string line_ans;
+
+                    try
+                    {
+                        var r = _eval.Evaluate(data.Expression);
+                        line_ans = r.Result.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        line_ans = ex.Message;
+                    }
+
+                    AppendData(data, line_ans);
+                }
+                else
+                {
+                    AppendData(data, null);
+                }
+            }
+
+            historyRichTextBox.ScrollToCaret();
+            historyRichTextBox.ResumeLayout();
+
+            if (shouldLock)
+                Unlock();
+        }
+
+        public void EvaluateRichTextBox(bool ignoreRegular = false)
+        {
+            if (!Lock())
+                return;
+
+            historyRichTextBox.SuspendLayout();
+
+            string currentText = historyRichTextBox.Text;
+            int currentRow = 0, currentIndent = 0, currentSel = historyRichTextBox.SelectionStart;
+
+            historyRichTextBox.ResetText();
+
+            if (currentSel > 0)
+            {
+                var frontStr = currentText.Substring(0, currentSel);
+                currentRow = frontStr.Count((c) => { return c == '\n'; });
+                currentIndent = currentSel - (frontStr.LastIndexOf('\n') + 1);
+            }
+
+            using (StringReader sr = new StringReader(currentText))
+            {
+                int row = 0;
+                int row_begin = 0;
+
+                while (sr.Peek() >= 0)
+                {
+                    var line = sr.ReadLine();
+                    string expression = line;
+
+                    int tab_id = expression.IndexOf('\t');
+                    if (tab_id > -1)
+                        expression = expression.Substring(0, tab_id).Trim();
+                    else
+                        expression = expression.Trim();
+
+                    if (string.IsNullOrEmpty(expression))
+                    {
+                        var append = Environment.NewLine;
+                        historyRichTextBox.AppendText(append);
+                        if (++row <= currentRow)
+                            row_begin += append.Length;
+                        continue;
+                    }
+
+                    if (ignoreRegular && expression.Contains('='))
+                        continue;
+
+                    string line_ans;
+                    bool success = true;
+
+                    try
+                    {
+                        var r = _eval.Evaluate(expression);
+                        line_ans = r.Result.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        line_ans = ex.Message;
+                        success = false;
+                    }
+
+                    int append_len = AppendData(expression, success, line_ans);
+                    if (++row <= currentRow)
+                        row_begin += append_len;
+                }
+
+                historyRichTextBox.SelectionStart = row_begin + currentIndent;
+            }
+
+            historyRichTextBox.ScrollToCaret();
+            historyRichTextBox.ResumeLayout();
+
+            if (!ignoreRegular)
+                vform.OutputVariable(GetVariables());
+
+            Unlock();
+        }
+
         private void Eval(string input)
         {
+            if (!Lock())
+                return;
+
             string answer;
             bool hasError = false;
+            bool regular = true;
 
             watch.Reset();
             watch.Start();
             try
             {
-                answer = _eval.Evaluate(input).ToString();
+                vform.InputVariable(GetVariables());
+                var r = _eval.Evaluate(input);
+                answer = r.Result.ToString();
+                regular = r.Regular;
+                vform.OutputVariable(GetVariables());
             }
             catch (Exception ex)
             {
@@ -95,26 +283,22 @@ namespace LoreSoft.Calculator
             watch.Stop();
             timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " ms";
 
-            _history.Add(input);
+            // EvaluateAll();
+
+            _history.Add(new HistoryData { Expression = input, Success = !hasError, Regular = regular });
             _historyIndex = 0;
 
             historyRichTextBox.SuspendLayout();
-            historyRichTextBox.AppendText(input);
-            historyRichTextBox.AppendText(Environment.NewLine);
-            historyRichTextBox.AppendText("\t");
-            if (hasError)
-                historyRichTextBox.SelectionColor = Color.Maroon;
-            else
-                historyRichTextBox.SelectionColor = Color.Blue;
-            historyRichTextBox.SelectionFont = new Font(historyRichTextBox.Font, FontStyle.Bold);
-            historyRichTextBox.AppendText(answer);
-            historyRichTextBox.AppendText(Environment.NewLine);
+
+            AppendData(_history[_history.Count - 1], answer);
+
             historyRichTextBox.ScrollToCaret();
             historyRichTextBox.ResumeLayout();
 
             inputTextBox.ResetText();
             inputTextBox.Focus();
             inputTextBox.Select();
+            Unlock();
         }
 
         private void CalculatorForm_Load(object sender, EventArgs e)
@@ -130,6 +314,7 @@ namespace LoreSoft.Calculator
             Settings.Default.CalculatorWindowState = WindowState;
             Settings.Default.HistoryFont = historyRichTextBox.Font;
             Settings.Default.InputFont = inputTextBox.Font;
+            Settings.Default.HistoryText = historyRichTextBox.Text;
             Settings.Default.Save();
         }
 
@@ -164,6 +349,11 @@ namespace LoreSoft.Calculator
                 e.Handled = true;
                 return;
             }
+        }
+
+        public VariableDictionary GetVariables()
+        {
+            return _eval.Variables;
         }
 
         private void inputTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -405,6 +595,26 @@ namespace LoreSoft.Calculator
         {
             Settings.Default.IsSingleInstance = allowOnlyOneInstanceToolStripMenuItem.Checked;
             Settings.Default.Save();
+        }
+
+        private void CalculatorForm_LocationChanged(object sender, EventArgs e)
+        {
+            vform.Location = new Point(Location.X + Width, Location.Y);
+        }
+
+        private void historyRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!lockTextChange)
+            {
+                timer1.Interval = 300;
+                timer1.Start();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            EvaluateRichTextBox();
         }
     }
 }

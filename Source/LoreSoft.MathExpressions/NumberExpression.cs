@@ -9,9 +9,10 @@ namespace LoreSoft.MathExpressions
     {
         /// <summary>Initializes a new instance of the <see cref="NumberExpression"/> class.</summary>
         /// <param name="value">The number value for this expression.</param>
-        public NumberExpression(double value)
+        public NumberExpression(double value, bool variable = false)
         {
             _value = value;
+            _isVariable = variable;
             base.Evaluate = delegate
             {
                 return Value;
@@ -32,6 +33,12 @@ namespace LoreSoft.MathExpressions
         public double Value
         {
             get { return _value; }
+        }
+
+        private bool _isVariable;
+        public bool IsVariable
+        {
+            get { return _isVariable; }
         }
 
         /// <summary>Determines whether the specified char is a number.</summary>

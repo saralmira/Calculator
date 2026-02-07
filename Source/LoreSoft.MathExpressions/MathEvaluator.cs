@@ -94,15 +94,36 @@ namespace LoreSoft.MathExpressions
             get { return _variables[AnswerVariable]; }
         }
 
+        public struct EvalResult
+        {
+            public double Result;
+            public bool Regular;
+        }
+
         /// <summary>Evaluates the specified expression.</summary>
         /// <param name="expression">The expression to evaluate.</param>
         /// <returns>The result of the evaluated expression.</returns>
         /// <exception cref="ArgumentNullException">When expression is null or empty.</exception>
         /// <exception cref="ParseException">When there is an error parsing the expression.</exception>
-        public double Evaluate(string expression)
+        public EvalResult Evaluate(string expression)
         {
             if (string.IsNullOrEmpty(expression))
                 throw new ArgumentNullException("expression");
+
+            int id = expression.IndexOf('=');
+            string new_variable_name = null;
+            bool regular = true;
+
+            if (id > -1)
+            {
+                regular = false;
+
+                var variable_name = expression.Substring(0, id).Trim();
+                //if (!_variables.ContainsKey(variable_name))
+                new_variable_name = variable_name;
+
+                expression = expression.Substring(id + 1).Trim();
+            }
 
             _expressionReader = new StringReader(expression);
             _symbolStack.Clear();
@@ -115,7 +136,11 @@ namespace LoreSoft.MathExpressions
             double result = CalculateFromQueue();
 
             _variables[AnswerVariable] = result;
-            return result;
+
+            if (!string.IsNullOrEmpty(new_variable_name))
+                _variables[new_variable_name] = result;
+
+            return new EvalResult { Result = result, Regular = regular };
         }
 
         /// <summary>Registers a function for the <see cref="MathEvaluator"/>.</summary>
@@ -156,6 +181,8 @@ namespace LoreSoft.MathExpressions
             char lastChar = '\0'; 
             _currentChar = '\0';
 
+            bool isNumOrV = false;
+
             do
             {
                 // last non white space char
@@ -168,10 +195,21 @@ namespace LoreSoft.MathExpressions
                     continue;
 
                 if (TryNumber(lastChar))
+                {
+                    isNumOrV = true;
                     continue;
+                }
 
                 if (TryString())
+                {
+                    if (isNumOrV)
+                        _symbolStack.Push("*");
+
+                    isNumOrV = true;
                     continue;
+                }
+
+                isNumOrV = false;
 
                 if (TryStartGroup())
                     continue;
@@ -244,7 +282,7 @@ namespace LoreSoft.MathExpressions
             if (_variables.ContainsKey(_buffer.ToString()))
             {
                 double value = _variables[_buffer.ToString()];
-                NumberExpression expression = new NumberExpression(value);
+                NumberExpression expression = new NumberExpression(value, true);
                 _expressionQueue.Enqueue(expression);
 
                 return true;
