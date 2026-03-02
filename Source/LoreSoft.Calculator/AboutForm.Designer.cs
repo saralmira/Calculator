@@ -59,17 +59,17 @@ namespace LoreSoft.Calculator
             // 
             // assemblyColumnHeader
             // 
-            this.assemblyColumnHeader.Text = "Module";
+            this.assemblyColumnHeader.Text = "模块";
             this.assemblyColumnHeader.Width = 160;
             // 
             // versionColumnHeader
             // 
-            this.versionColumnHeader.Text = "Version";
+            this.versionColumnHeader.Text = "版本";
             this.versionColumnHeader.Width = 105;
             // 
             // dateColumnHeader
             // 
-            this.dateColumnHeader.Text = "Date";
+            this.dateColumnHeader.Text = "日期";
             this.dateColumnHeader.Width = 95;
             // 
             // copyrightLabel
@@ -79,7 +79,7 @@ namespace LoreSoft.Calculator
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(273, 23);
             this.copyrightLabel.TabIndex = 22;
-            this.copyrightLabel.Text = "Application Copyright";
+            this.copyrightLabel.Text = "应用程序版权";
             // 
             // descriptionLabel
             // 
@@ -88,7 +88,7 @@ namespace LoreSoft.Calculator
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(273, 32);
             this.descriptionLabel.TabIndex = 21;
-            this.descriptionLabel.Text = "Application Description";
+            this.descriptionLabel.Text = "应用程序描述";
             // 
             // versionLabel
             // 
@@ -97,7 +97,7 @@ namespace LoreSoft.Calculator
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(273, 23);
             this.versionLabel.TabIndex = 20;
-            this.versionLabel.Text = "Application Version";
+            this.versionLabel.Text = "应用程序版本";
             // 
             // titleLabel
             // 
@@ -106,7 +106,7 @@ namespace LoreSoft.Calculator
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(273, 24);
             this.titleLabel.TabIndex = 19;
-            this.titleLabel.Text = "Application Title";
+            this.titleLabel.Text = "应用程序标题";
             // 
             // loresoftLinkLabel
             // 
@@ -139,7 +139,7 @@ namespace LoreSoft.Calculator
             this.versionGroupBox.Size = new System.Drawing.Size(400, 144);
             this.versionGroupBox.TabIndex = 17;
             this.versionGroupBox.TabStop = false;
-            this.versionGroupBox.Text = "Version Information";
+            this.versionGroupBox.Text = "版本信息";
             // 
             // okButton
             // 
@@ -149,7 +149,7 @@ namespace LoreSoft.Calculator
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 16;
-            this.okButton.Text = "&OK";
+            this.okButton.Text = "确定(&O)";
             // 
             // AboutForm
             // 
@@ -172,7 +172,7 @@ namespace LoreSoft.Calculator
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About Calculator.NET";
+            this.Text = "关于计算器.NET";
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox)).EndInit();
             this.versionGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);

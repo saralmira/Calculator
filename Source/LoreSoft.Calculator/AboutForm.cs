@@ -15,9 +15,9 @@ namespace LoreSoft.Calculator
         {
             InitializeComponent();
 
-            this.Text = "About " + ThisAssembly.AssemblyTitle;
+this.Text = "关于 " + ThisAssembly.AssemblyTitle;
             titleLabel.Text = ThisAssembly.AssemblyTitle;
-            versionLabel.Text = "Version " + ThisAssembly.AssemblyFileVersion;
+            versionLabel.Text = "版本 " + ThisAssembly.AssemblyFileVersion;
             descriptionLabel.Text = ThisAssembly.AssemblyDescription;
             copyrightLabel.Text = ThisAssembly.AssemblyCopyright;
 

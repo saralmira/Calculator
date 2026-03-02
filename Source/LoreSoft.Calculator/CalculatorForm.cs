@@ -75,8 +75,8 @@ namespace LoreSoft.Calculator
 
         private void OnApplicationIdle(object sender, EventArgs e)
         {
-            numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "NUM" : string.Empty;
-            answerToolStripStatusLabel.Text = "Answer: " + _eval.Answer;
+numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : string.Empty;
+            answerToolStripStatusLabel.Text = "答案: " + _eval.Answer;
 
             undoToolStripMenuItem.Enabled = inputTextBox.ContainsFocus && inputTextBox.CanUndo;
             undoToolStripButton.Enabled = undoToolStripMenuItem.Enabled;
@@ -281,7 +281,7 @@ namespace LoreSoft.Calculator
                 hasError = true;
             }
             watch.Stop();
-            timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " ms";
+            timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " 毫秒";
 
             // EvaluateAll();
 
