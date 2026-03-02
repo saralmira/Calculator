@@ -194,13 +194,14 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
             {
                 var frontStr = currentText.Substring(0, currentSel);
                 currentRow = frontStr.Count((c) => { return c == '\n'; });
-                currentIndent = currentSel - (frontStr.LastIndexOf('\n') + 1);
+                currentIndent = Math.Max(0, currentSel - 1 - (frontStr.LastIndexOf('\n') + 1));
             }
 
             using (StringReader sr = new StringReader(currentText))
             {
                 int row = 0;
                 int row_begin = 0;
+                var variables = GetVariables();
 
                 while (sr.Peek() >= 0)
                 {
@@ -222,8 +223,16 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
                         continue;
                     }
 
-                    if (ignoreRegular && expression.Contains('='))
-                        continue;
+                    if (ignoreRegular)
+                    {
+                        int eId = expression.IndexOf('=');
+                        if (eId > -1)
+                        {
+                            var variableName = expression.Substring(0, eId).Trim();
+                            if (!string.IsNullOrEmpty(variableName) && variables.TryGetValue(variableName, out double variableValue))
+                                expression = variableName + "=" + variableValue.ToString();
+                        }
+                    }
 
                     string line_ans;
                     bool success = true;

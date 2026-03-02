@@ -135,6 +135,7 @@ namespace LoreSoft.Calculator
             // 
             // mainMenuStrip
             // 
+            this.mainMenuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -157,7 +158,7 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(65, 32);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(97, 32);
             this.fileToolStripMenuItem.Text = "文件(&F)";
             // 
             // saveToolStripMenuItem
@@ -166,19 +167,19 @@ namespace LoreSoft.Calculator
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(330, 40);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(357, 40);
             this.saveToolStripMenuItem.Text = "保存历史记录(&S)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(327, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(354, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(330, 40);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(357, 40);
             this.exitToolStripMenuItem.Text = "退出(&X)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -193,7 +194,7 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator4,
             this.selectAllToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(69, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
             this.editToolStripMenuItem.Text = "编辑(&E)";
             // 
             // undoToolStripMenuItem
@@ -201,14 +202,14 @@ namespace LoreSoft.Calculator
             this.undoToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Undo;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(302, 40);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
             this.undoToolStripMenuItem.Text = "撤销(&U)";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(299, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(276, 6);
             // 
             // cutToolStripMenuItem
             // 
@@ -216,7 +217,7 @@ namespace LoreSoft.Calculator
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(302, 40);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
             this.cutToolStripMenuItem.Text = "剪切(&T)";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -226,7 +227,7 @@ namespace LoreSoft.Calculator
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(302, 40);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
             this.copyToolStripMenuItem.Text = "复制(&C)";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -236,20 +237,20 @@ namespace LoreSoft.Calculator
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(302, 40);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
             this.pasteToolStripMenuItem.Text = "粘贴(&P)";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(299, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(276, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(302, 40);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
             this.selectAllToolStripMenuItem.Text = "全选(&A)";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
@@ -264,7 +265,7 @@ namespace LoreSoft.Calculator
             this.replaceCalculatorToolStripMenuItem,
             this.allowOnlyOneInstanceToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(110, 32);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(103, 32);
             this.optionsToolStripMenuItem.Text = "选项(&O)";
             // 
             // clearHistoryToolStripMenuItem
@@ -272,20 +273,20 @@ namespace LoreSoft.Calculator
             this.clearHistoryToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Delete;
             this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
             this.clearHistoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(378, 40);
+            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
             this.clearHistoryToolStripMenuItem.Text = "清除历史记录(&C)";
             this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(375, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(360, 6);
             // 
             // historyFontToolStripMenuItem
             // 
             this.historyFontToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Font;
             this.historyFontToolStripMenuItem.Name = "historyFontToolStripMenuItem";
-            this.historyFontToolStripMenuItem.Size = new System.Drawing.Size(378, 40);
+            this.historyFontToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
             this.historyFontToolStripMenuItem.Text = "历史记录字体(&H)...";
             this.historyFontToolStripMenuItem.Click += new System.EventHandler(this.historyFontToolStripMenuItem_Click);
             // 
@@ -293,20 +294,20 @@ namespace LoreSoft.Calculator
             // 
             this.inputFontToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Font;
             this.inputFontToolStripMenuItem.Name = "inputFontToolStripMenuItem";
-            this.inputFontToolStripMenuItem.Size = new System.Drawing.Size(378, 40);
+            this.inputFontToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
             this.inputFontToolStripMenuItem.Text = "输入字体(&I)...";
             this.inputFontToolStripMenuItem.Click += new System.EventHandler(this.inputFontToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(375, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(360, 6);
             // 
             // replaceCalculatorToolStripMenuItem
             // 
             this.replaceCalculatorToolStripMenuItem.CheckOnClick = true;
             this.replaceCalculatorToolStripMenuItem.Name = "replaceCalculatorToolStripMenuItem";
-            this.replaceCalculatorToolStripMenuItem.Size = new System.Drawing.Size(378, 40);
+            this.replaceCalculatorToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
             this.replaceCalculatorToolStripMenuItem.Text = "替换计算器(&R)";
             this.replaceCalculatorToolStripMenuItem.Click += new System.EventHandler(this.replaceCalculatorToolStripMenuItem_Click);
             // 
@@ -314,7 +315,7 @@ namespace LoreSoft.Calculator
             // 
             this.allowOnlyOneInstanceToolStripMenuItem.CheckOnClick = true;
             this.allowOnlyOneInstanceToolStripMenuItem.Name = "allowOnlyOneInstanceToolStripMenuItem";
-            this.allowOnlyOneInstanceToolStripMenuItem.Size = new System.Drawing.Size(378, 40);
+            this.allowOnlyOneInstanceToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
             this.allowOnlyOneInstanceToolStripMenuItem.Text = "只允许一个实例(&I)";
             this.allowOnlyOneInstanceToolStripMenuItem.Click += new System.EventHandler(this.allowOnlyOneInstanceToolStripMenuItem_Click);
             // 
@@ -325,7 +326,7 @@ namespace LoreSoft.Calculator
             this.trigFunctionsToolStripMenuItem,
             this.logFunctionsToolStripMenuItem});
             this.functionsToolStripMenuItem.Name = "functionsToolStripMenuItem";
-            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(128, 32);
+            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(102, 32);
             this.functionsToolStripMenuItem.Text = "函数(&U)";
             // 
             // basicOperationsToolStripMenuItem
@@ -341,13 +342,13 @@ namespace LoreSoft.Calculator
             this.sqrtToolStripMenuItem,
             this.absToolStripMenuItem});
             this.basicOperationsToolStripMenuItem.Name = "basicOperationsToolStripMenuItem";
-            this.basicOperationsToolStripMenuItem.Size = new System.Drawing.Size(299, 40);
+            this.basicOperationsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.basicOperationsToolStripMenuItem.Text = "基本运算";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.addToolStripMenuItem.Tag = "+";
             this.addToolStripMenuItem.Text = "加";
             this.addToolStripMenuItem.ToolTipText = "将两个数相加。";
@@ -356,7 +357,7 @@ namespace LoreSoft.Calculator
             // subtractToolStripMenuItem
             // 
             this.subtractToolStripMenuItem.Name = "subtractToolStripMenuItem";
-            this.subtractToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.subtractToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.subtractToolStripMenuItem.Tag = "-";
             this.subtractToolStripMenuItem.Text = "减";
             this.subtractToolStripMenuItem.ToolTipText = "将两个数相减。";
@@ -365,7 +366,7 @@ namespace LoreSoft.Calculator
             // multiplyToolStripMenuItem
             // 
             this.multiplyToolStripMenuItem.Name = "multiplyToolStripMenuItem";
-            this.multiplyToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.multiplyToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.multiplyToolStripMenuItem.Tag = "*";
             this.multiplyToolStripMenuItem.Text = "乘";
             this.multiplyToolStripMenuItem.ToolTipText = "将两个数相乘。";
@@ -374,7 +375,7 @@ namespace LoreSoft.Calculator
             // divideToolStripMenuItem
             // 
             this.divideToolStripMenuItem.Name = "divideToolStripMenuItem";
-            this.divideToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.divideToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.divideToolStripMenuItem.Tag = "/";
             this.divideToolStripMenuItem.Text = "除";
             this.divideToolStripMenuItem.ToolTipText = "将两个数相除。";
@@ -383,7 +384,7 @@ namespace LoreSoft.Calculator
             // modulusToolStripMenuItem
             // 
             this.modulusToolStripMenuItem.Name = "modulusToolStripMenuItem";
-            this.modulusToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.modulusToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.modulusToolStripMenuItem.Tag = "%";
             this.modulusToolStripMenuItem.Text = "取模";
             this.modulusToolStripMenuItem.ToolTipText = "将两个数相除并返回余数。";
@@ -392,7 +393,7 @@ namespace LoreSoft.Calculator
             // powerToolStripMenuItem
             // 
             this.powerToolStripMenuItem.Name = "powerToolStripMenuItem";
-            this.powerToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.powerToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.powerToolStripMenuItem.Tag = "^";
             this.powerToolStripMenuItem.Text = "幂";
             this.powerToolStripMenuItem.ToolTipText = "将一个数提升到另一个数的幂。";
@@ -401,12 +402,12 @@ namespace LoreSoft.Calculator
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(214, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(189, 6);
             // 
             // sqrtToolStripMenuItem
             // 
             this.sqrtToolStripMenuItem.Name = "sqrtToolStripMenuItem";
-            this.sqrtToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.sqrtToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.sqrtToolStripMenuItem.Tag = "sqrt(|)";
             this.sqrtToolStripMenuItem.Text = "平方根";
             this.sqrtToolStripMenuItem.ToolTipText = "返回指定数字的平方根。";
@@ -415,7 +416,7 @@ namespace LoreSoft.Calculator
             // absToolStripMenuItem
             // 
             this.absToolStripMenuItem.Name = "absToolStripMenuItem";
-            this.absToolStripMenuItem.Size = new System.Drawing.Size(217, 40);
+            this.absToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.absToolStripMenuItem.Tag = "abs(|)";
             this.absToolStripMenuItem.Text = "绝对值";
             this.absToolStripMenuItem.ToolTipText = "返回指定数字的绝对值。";
@@ -434,13 +435,13 @@ namespace LoreSoft.Calculator
             this.tanhToolStripMenuItem,
             this.atanToolStripMenuItem});
             this.trigFunctionsToolStripMenuItem.Name = "trigFunctionsToolStripMenuItem";
-            this.trigFunctionsToolStripMenuItem.Size = new System.Drawing.Size(299, 40);
+            this.trigFunctionsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.trigFunctionsToolStripMenuItem.Text = "三角函数";
             // 
             // cosToolStripMenuItem
             // 
             this.cosToolStripMenuItem.Name = "cosToolStripMenuItem";
-            this.cosToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.cosToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.cosToolStripMenuItem.Tag = "cos(|)";
             this.cosToolStripMenuItem.Text = "余弦";
             this.cosToolStripMenuItem.ToolTipText = "返回指定角度的余弦值。";
@@ -449,7 +450,7 @@ namespace LoreSoft.Calculator
             // coshToolStripMenuItem
             // 
             this.coshToolStripMenuItem.Name = "coshToolStripMenuItem";
-            this.coshToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.coshToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.coshToolStripMenuItem.Tag = "cosh(|)";
             this.coshToolStripMenuItem.Text = "双曲余弦";
             this.coshToolStripMenuItem.ToolTipText = "返回指定角度的双曲余弦值。";
@@ -458,7 +459,7 @@ namespace LoreSoft.Calculator
             // acosToolStripMenuItem
             // 
             this.acosToolStripMenuItem.Name = "acosToolStripMenuItem";
-            this.acosToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.acosToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.acosToolStripMenuItem.Tag = "acos(|)";
             this.acosToolStripMenuItem.Text = "反余弦";
             this.acosToolStripMenuItem.ToolTipText = "返回余弦值为指定数字的角度。";
@@ -467,7 +468,7 @@ namespace LoreSoft.Calculator
             // sinToolStripMenuItem
             // 
             this.sinToolStripMenuItem.Name = "sinToolStripMenuItem";
-            this.sinToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.sinToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.sinToolStripMenuItem.Tag = "sin(|)";
             this.sinToolStripMenuItem.Text = "正弦";
             this.sinToolStripMenuItem.ToolTipText = "返回指定角度的正弦值。";
@@ -476,7 +477,7 @@ namespace LoreSoft.Calculator
             // sinhToolStripMenuItem
             // 
             this.sinhToolStripMenuItem.Name = "sinhToolStripMenuItem";
-            this.sinhToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.sinhToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.sinhToolStripMenuItem.Tag = "sinh(|)";
             this.sinhToolStripMenuItem.Text = "双曲正弦";
             this.sinhToolStripMenuItem.ToolTipText = "返回指定角度的双曲正弦值。";
@@ -485,7 +486,7 @@ namespace LoreSoft.Calculator
             // asinToolStripMenuItem
             // 
             this.asinToolStripMenuItem.Name = "asinToolStripMenuItem";
-            this.asinToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.asinToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.asinToolStripMenuItem.Tag = "asin(|)";
             this.asinToolStripMenuItem.Text = "反正弦";
             this.asinToolStripMenuItem.ToolTipText = "返回正弦值为指定数字的角度。";
@@ -494,7 +495,7 @@ namespace LoreSoft.Calculator
             // tanToolStripMenuItem
             // 
             this.tanToolStripMenuItem.Name = "tanToolStripMenuItem";
-            this.tanToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.tanToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.tanToolStripMenuItem.Tag = "tan(|)";
             this.tanToolStripMenuItem.Text = "正切";
             this.tanToolStripMenuItem.ToolTipText = "返回指定角度的正切值。";
@@ -503,7 +504,7 @@ namespace LoreSoft.Calculator
             // tanhToolStripMenuItem
             // 
             this.tanhToolStripMenuItem.Name = "tanhToolStripMenuItem";
-            this.tanhToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.tanhToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.tanhToolStripMenuItem.Tag = "tanh(|)";
             this.tanhToolStripMenuItem.Text = "双曲正切";
             this.tanhToolStripMenuItem.ToolTipText = "返回指定角度的双曲正切值。";
@@ -512,7 +513,7 @@ namespace LoreSoft.Calculator
             // atanToolStripMenuItem
             // 
             this.atanToolStripMenuItem.Name = "atanToolStripMenuItem";
-            this.atanToolStripMenuItem.Size = new System.Drawing.Size(176, 40);
+            this.atanToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.atanToolStripMenuItem.Tag = "atan(|)";
             this.atanToolStripMenuItem.Text = "反正切";
             this.atanToolStripMenuItem.ToolTipText = "返回正切值为指定数字的角度。";
@@ -525,13 +526,13 @@ namespace LoreSoft.Calculator
             this.logToolStripMenuItem,
             this.log10ToolStripMenuItem});
             this.logFunctionsToolStripMenuItem.Name = "logFunctionsToolStripMenuItem";
-            this.logFunctionsToolStripMenuItem.Size = new System.Drawing.Size(299, 40);
+            this.logFunctionsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.logFunctionsToolStripMenuItem.Text = "对数函数";
             // 
             // expToolStripMenuItem
             // 
             this.expToolStripMenuItem.Name = "expToolStripMenuItem";
-            this.expToolStripMenuItem.Size = new System.Drawing.Size(185, 40);
+            this.expToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.expToolStripMenuItem.Tag = "exp(|)";
             this.expToolStripMenuItem.Text = "指数";
             this.expToolStripMenuItem.ToolTipText = "返回 e 的指定次幂。";
@@ -540,7 +541,7 @@ namespace LoreSoft.Calculator
             // logToolStripMenuItem
             // 
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(185, 40);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.logToolStripMenuItem.Tag = "log(|)";
             this.logToolStripMenuItem.Text = "对数";
             this.logToolStripMenuItem.ToolTipText = "返回指定数字的对数。";
@@ -549,7 +550,7 @@ namespace LoreSoft.Calculator
             // log10ToolStripMenuItem
             // 
             this.log10ToolStripMenuItem.Name = "log10ToolStripMenuItem";
-            this.log10ToolStripMenuItem.Size = new System.Drawing.Size(185, 40);
+            this.log10ToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.log10ToolStripMenuItem.Tag = "log10(|)";
             this.log10ToolStripMenuItem.Text = "常用对数";
             this.log10ToolStripMenuItem.ToolTipText = "返回指定数字的以10为底的对数。";
@@ -565,7 +566,7 @@ namespace LoreSoft.Calculator
             this.timeToolStripMenuItem,
             this.volumeToolStripMenuItem});
             this.conversionsToolStripMenuItem.Name = "conversionsToolStripMenuItem";
-            this.conversionsToolStripMenuItem.Size = new System.Drawing.Size(153, 32);
+            this.conversionsToolStripMenuItem.Size = new System.Drawing.Size(142, 32);
             this.conversionsToolStripMenuItem.Text = "单位换算(&C)";
             // 
             // lengthToolStripMenuItem
@@ -573,7 +574,7 @@ namespace LoreSoft.Calculator
             this.lengthToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lengthDummyToolStripMenuItem});
             this.lengthToolStripMenuItem.Name = "lengthToolStripMenuItem";
-            this.lengthToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.lengthToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.lengthToolStripMenuItem.Text = "长度(&L)";
             this.lengthToolStripMenuItem.DropDownOpening += new System.EventHandler(this.lengthToolStripMenuItem_DropDownOpening);
             // 
@@ -588,7 +589,7 @@ namespace LoreSoft.Calculator
             this.massToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.massDummyToolStripMenuItem});
             this.massToolStripMenuItem.Name = "massToolStripMenuItem";
-            this.massToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.massToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.massToolStripMenuItem.Text = "质量(&M)";
             this.massToolStripMenuItem.DropDownOpening += new System.EventHandler(this.massToolStripMenuItem_DropDownOpening);
             // 
@@ -603,7 +604,7 @@ namespace LoreSoft.Calculator
             this.speedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.speedDummyToolStripMenuItem});
             this.speedToolStripMenuItem.Name = "speedToolStripMenuItem";
-            this.speedToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.speedToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.speedToolStripMenuItem.Text = "速度(&S)";
             this.speedToolStripMenuItem.DropDownOpening += new System.EventHandler(this.speedToolStripMenuItem_DropDownOpening);
             // 
@@ -618,7 +619,7 @@ namespace LoreSoft.Calculator
             this.temperatureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.temperatureDummyToolStripMenuItem});
             this.temperatureToolStripMenuItem.Name = "temperatureToolStripMenuItem";
-            this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.temperatureToolStripMenuItem.Text = "温度(&P)";
             this.temperatureToolStripMenuItem.DropDownOpening += new System.EventHandler(this.temperatureToolStripMenuItem_DropDownOpening);
             // 
@@ -633,7 +634,7 @@ namespace LoreSoft.Calculator
             this.timeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.timeDummyToolStripMenuItem});
             this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
-            this.timeToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.timeToolStripMenuItem.Text = "时间(&T)";
             this.timeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.timeToolStripMenuItem_DropDownOpening);
             // 
@@ -648,7 +649,7 @@ namespace LoreSoft.Calculator
             this.volumeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.volumeDummyToolStripMenuItem});
             this.volumeToolStripMenuItem.Name = "volumeToolStripMenuItem";
-            this.volumeToolStripMenuItem.Size = new System.Drawing.Size(259, 40);
+            this.volumeToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
             this.volumeToolStripMenuItem.Text = "体积(&V)";
             this.volumeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.volumeToolStripMenuItem_DropDownOpening);
             // 
@@ -663,14 +664,14 @@ namespace LoreSoft.Calculator
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 32);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(102, 32);
             this.helpToolStripMenuItem.Text = "帮助(&H)";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Help;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(215, 40);
             this.aboutToolStripMenuItem.Text = "关于(&A)...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -804,21 +805,21 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator9,
             this.copyHistoryContextStripMenuItem2});
             this.historyContextMenuStrip.Name = "historyContextMenuStrip";
-            this.historyContextMenuStrip.Size = new System.Drawing.Size(307, 82);
+            this.historyContextMenuStrip.Size = new System.Drawing.Size(331, 82);
             // 
             // clearHistoryContextStripMenuItem
             // 
             this.clearHistoryContextStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Delete;
             this.clearHistoryContextStripMenuItem.Name = "clearHistoryContextStripMenuItem";
             this.clearHistoryContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.clearHistoryContextStripMenuItem.Size = new System.Drawing.Size(306, 36);
+            this.clearHistoryContextStripMenuItem.Size = new System.Drawing.Size(330, 36);
             this.clearHistoryContextStripMenuItem.Text = "清除历史记录(&C)";
             this.clearHistoryContextStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(303, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(327, 6);
             // 
             // copyHistoryContextStripMenuItem2
             // 
@@ -826,7 +827,7 @@ namespace LoreSoft.Calculator
             this.copyHistoryContextStripMenuItem2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyHistoryContextStripMenuItem2.Name = "copyHistoryContextStripMenuItem2";
             this.copyHistoryContextStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyHistoryContextStripMenuItem2.Size = new System.Drawing.Size(306, 36);
+            this.copyHistoryContextStripMenuItem2.Size = new System.Drawing.Size(330, 36);
             this.copyHistoryContextStripMenuItem2.Text = "复制(&C)";
             this.copyHistoryContextStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -885,21 +886,21 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator8,
             this.selectAllContextStripMenuItem});
             this.inputContextMenuStrip.Name = "inputContextMenuStrip";
-            this.inputContextMenuStrip.Size = new System.Drawing.Size(270, 196);
+            this.inputContextMenuStrip.Size = new System.Drawing.Size(247, 196);
             // 
             // undoContextStripMenuItem
             // 
             this.undoContextStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Undo;
             this.undoContextStripMenuItem.Name = "undoContextStripMenuItem";
             this.undoContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoContextStripMenuItem.Size = new System.Drawing.Size(269, 36);
+            this.undoContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.undoContextStripMenuItem.Text = "撤销(&U)";
             this.undoContextStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(266, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(243, 6);
             // 
             // cutContextStripMenuItem
             // 
@@ -907,7 +908,7 @@ namespace LoreSoft.Calculator
             this.cutContextStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutContextStripMenuItem.Name = "cutContextStripMenuItem";
             this.cutContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutContextStripMenuItem.Size = new System.Drawing.Size(269, 36);
+            this.cutContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.cutContextStripMenuItem.Text = "剪切(&T)";
             this.cutContextStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -917,7 +918,7 @@ namespace LoreSoft.Calculator
             this.copyContextStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyContextStripMenuItem.Name = "copyContextStripMenuItem";
             this.copyContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyContextStripMenuItem.Size = new System.Drawing.Size(269, 36);
+            this.copyContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.copyContextStripMenuItem.Text = "复制(&C)";
             this.copyContextStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -927,20 +928,20 @@ namespace LoreSoft.Calculator
             this.pasteContextStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteContextStripMenuItem.Name = "pasteContextStripMenuItem";
             this.pasteContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteContextStripMenuItem.Size = new System.Drawing.Size(269, 36);
+            this.pasteContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.pasteContextStripMenuItem.Text = "粘贴(&P)";
             this.pasteContextStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(266, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(243, 6);
             // 
             // selectAllContextStripMenuItem
             // 
             this.selectAllContextStripMenuItem.Name = "selectAllContextStripMenuItem";
             this.selectAllContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllContextStripMenuItem.Size = new System.Drawing.Size(269, 36);
+            this.selectAllContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.selectAllContextStripMenuItem.Text = "全选(&A)";
             this.selectAllContextStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 

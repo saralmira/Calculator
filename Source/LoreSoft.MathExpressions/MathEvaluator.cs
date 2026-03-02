@@ -90,13 +90,22 @@ namespace LoreSoft.MathExpressions
         /// <value>The answer variable value.</value>
         /// <seealso cref="Variables"/>
         public double Answer
-        {
+{
             get { return _variables[AnswerVariable]; }
         }
 
+        /// <summary>
+        /// 表示表达式求值结果的结构体。
+        /// </summary>
         public struct EvalResult
         {
+            /// <summary>
+            /// 求值结果。
+            /// </summary>
             public double Result;
+            /// <summary>
+            /// 是否为常规表达式（非变量赋值）。
+            /// </summary>
             public bool Regular;
         }
 

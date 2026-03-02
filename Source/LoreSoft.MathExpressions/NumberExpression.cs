@@ -7,8 +7,9 @@ namespace LoreSoft.MathExpressions
     /// </summary>
     public class NumberExpression : ExpressionBase
     {
-        /// <summary>Initializes a new instance of the <see cref="NumberExpression"/> class.</summary>
+/// <summary>Initializes a new instance of the <see cref="NumberExpression"/> class.</summary>
         /// <param name="value">The number value for this expression.</param>
+        /// <param name="variable">Whether this expression represents a variable.</param>
         public NumberExpression(double value, bool variable = false)
         {
             _value = value;
@@ -35,7 +36,11 @@ namespace LoreSoft.MathExpressions
             get { return _value; }
         }
 
-        private bool _isVariable;
+private bool _isVariable;
+        /// <summary>
+        /// Gets a value indicating whether this expression represents a variable.
+        /// </summary>
+        /// <value><c>true</c> if this expression is a variable; otherwise, <c>false</c>.</value>
         public bool IsVariable
         {
             get { return _isVariable; }
