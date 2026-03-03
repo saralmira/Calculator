@@ -34,10 +34,14 @@ namespace LoreSoft.Calculator
 
         public void OutputVariable(VariableDictionary dict)
         {
+            this.SuspendLayout();
+            this.Enabled = false;
             dataGridView1.Rows.Clear();
 
             foreach (var v in dict)
                 dataGridView1.Rows.Add(new object[] { v.Key, v.Value });
+            this.Enabled = true;
+            this.ResumeLayout();
         }
 
         public void UpdateVariable(string name, double value)
@@ -45,6 +49,8 @@ namespace LoreSoft.Calculator
             if (name == null)
                 return;
 
+            this.SuspendLayout();
+            this.Enabled = false;
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
                 var r_n = r.Cells[0].Value as string;
@@ -56,6 +62,8 @@ namespace LoreSoft.Calculator
             }
 
             dataGridView1.Rows.Add(new object[] { name, value });
+            this.Enabled = true;
+            this.ResumeLayout();
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

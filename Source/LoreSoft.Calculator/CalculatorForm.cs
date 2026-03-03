@@ -194,7 +194,7 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
             {
                 var frontStr = currentText.Substring(0, currentSel);
                 currentRow = frontStr.Count((c) => { return c == '\n'; });
-                currentIndent = Math.Max(0, currentSel - 1 - (frontStr.LastIndexOf('\n') + 1));
+                currentIndent = Math.Max(0, currentSel - (frontStr.LastIndexOf('\n') + 1));
             }
 
             using (StringReader sr = new StringReader(currentText))
@@ -202,6 +202,9 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
                 int row = 0;
                 int row_begin = 0;
                 var variables = GetVariables();
+
+                watch.Reset();
+                watch.Start();
 
                 while (sr.Peek() >= 0)
                 {
@@ -253,16 +256,19 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
                         row_begin += append_len;
                 }
 
+                watch.Stop();
+                timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " 毫秒";
+
                 historyRichTextBox.SelectionStart = row_begin + currentIndent;
             }
-
-            historyRichTextBox.ScrollToCaret();
-            historyRichTextBox.ResumeLayout();
 
             if (!ignoreRegular)
                 vform.OutputVariable(GetVariables());
 
             Unlock();
+
+            historyRichTextBox.ScrollToCaret();
+            historyRichTextBox.ResumeLayout();
         }
 
         private void Eval(string input)
@@ -615,7 +621,7 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
         {
             if (!lockTextChange)
             {
-                timer1.Interval = 300;
+                timer1.Interval = 400;
                 timer1.Start();
             }
         }
