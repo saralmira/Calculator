@@ -36,6 +36,12 @@ namespace LoreSoft.Calculator
         public CalculatorForm()
         {
             InitializeComponent();
+            // Load and apply theme, then apply settings
+            ThemeManager.InitializeFromStorage();
+            ThemeManager.ApplyTheme(this);
+            // Enable keyboard shortcut for theme toggle
+            this.KeyPreview = true;
+            this.KeyDown += CalculatorForm_KeyDown;
             InitializeSettings();
             Application.Idle += new EventHandler(OnApplicationIdle);
             vform.Owner = this;
@@ -75,7 +81,7 @@ namespace LoreSoft.Calculator
 
         private void OnApplicationIdle(object sender, EventArgs e)
         {
-numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : string.Empty;
+            numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : string.Empty;
             answerToolStripStatusLabel.Text = "答案: " + _eval.Answer;
 
             undoToolStripMenuItem.Enabled = inputTextBox.ContainsFocus && inputTextBox.CanUndo;
@@ -127,8 +133,8 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
             historyRichTextBox.AppendText(tabSpace);
             if (!success)
                 historyRichTextBox.SelectionColor = Color.Maroon;
-            else
-                historyRichTextBox.SelectionColor = Color.Blue;
+            //else
+            //    historyRichTextBox.SelectionColor = Color.Blue;
             historyRichTextBox.SelectionFont = new Font(historyRichTextBox.Font, FontStyle.Bold);
             historyRichTextBox.AppendText(answer);
             historyRichTextBox.AppendText(Environment.NewLine);
@@ -320,6 +326,16 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
         {
             inputTextBox.Focus();
             inputTextBox.Select();
+        }
+
+        private void CalculatorForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Ctrl+T toggles the theme
+            if (e.Control && e.KeyCode == Keys.T)
+            {
+                ThemeManager.ToggleTheme();
+                e.Handled = true;
+            }
         }
 
         private void CalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -630,6 +646,11 @@ numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "数字锁定" : 
         {
             timer1.Stop();
             EvaluateRichTextBox();
+        }
+
+        private void toggleThemeToolStripButton_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
         }
     }
 }

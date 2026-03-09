@@ -16,6 +16,8 @@ namespace LoreSoft.Calculator
         public VariablesForm()
         {
             InitializeComponent();
+            ThemeManager.InitializeFromStorage();
+            ThemeManager.ApplyTheme(this);
         }
 
         public void InputVariable(VariableDictionary dict)

@@ -14,6 +14,8 @@ namespace LoreSoft.Calculator
         public AboutForm()
         {
             InitializeComponent();
+            ThemeManager.InitializeFromStorage();
+            ThemeManager.ApplyTheme(this);
 
 this.Text = "关于 " + ThisAssembly.AssemblyTitle;
             titleLabel.Text = ThisAssembly.AssemblyTitle;

@@ -163,6 +163,7 @@
     <Compile Include="VariablesForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ThemeManager.cs" />
     <Compile Include="VariablesForm.Designer.cs">
       <DependentUpon>VariablesForm.cs</DependentUpon>
     </Compile>
