@@ -219,9 +219,7 @@ namespace LoreSoft.Calculator
 
                     int tab_id = expression.IndexOf('\t');
                     if (tab_id > -1)
-                        expression = expression.Substring(0, tab_id).Trim();
-                    else
-                        expression = expression.Trim();
+                        expression = expression.Substring(0, tab_id);
 
                     if (string.IsNullOrEmpty(expression))
                     {
@@ -519,7 +517,11 @@ namespace LoreSoft.Calculator
                 string parrentKey = AttributeReader.GetAbbreviation(parentInfo);
                 string parrentName = AttributeReader.GetDescription(parentInfo);
 
-                ToolStripMenuItem t = new ToolStripMenuItem(parrentName);
+                ToolStripMenuItem t = new ToolStripMenuItem(parrentName)
+                {
+                    BackColor = p.BackColor,
+                    ForeColor = p.ForeColor
+                };
                 p.DropDownItems.Add(t);
 
                 for (int i = 0; i < a.Length; i++)
@@ -537,7 +539,11 @@ namespace LoreSoft.Calculator
                         parrentKey,
                         childKey);
 
-                    ToolStripMenuItem s = new ToolStripMenuItem(childName);
+                    ToolStripMenuItem s = new ToolStripMenuItem(childName)
+                    {
+                        BackColor = t.BackColor,
+                        ForeColor = t.ForeColor
+                    };
                     s.Click += new EventHandler(convert_Click);
                     s.Tag = key;
 

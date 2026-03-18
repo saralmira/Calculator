@@ -155,6 +155,9 @@
     <Compile Include="CalculatorForm.Designer.cs">
       <DependentUpon>CalculatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtToolStripSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ImageFileOptions.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Program.cs" />

@@ -17,24 +17,24 @@ namespace LoreSoft.Calculator
         private static string ThemeFile { get; } = Path.Combine(ThemeDir, "theme.config");
 
         // Light theme palette
-        private static readonly Color Light_BackColor = Color.FromArgb(246, 248, 250);
-        private static readonly Color Light_PanelColor = Color.FromArgb(235, 245, 255);
-        private static readonly Color Light_ForeColor = Color.FromArgb(45, 45, 48);
-        private static readonly Color Light_AccentColor = Color.FromArgb(0, 122, 204);
-        private static readonly Color Light_ButtonColor = Color.FromArgb(210, 226, 245);
-        private static readonly Color Light_ButtonTextColor = Color.FromArgb(15, 15, 15);
-        private static readonly Color Light_HighlightTextColor = Color.FromArgb(70, 70, 70);
-        private static readonly Color Light_AlternatingBackColor = Color.FromArgb(251, 248, 232);
+        public static readonly Color Light_BackColor = Color.FromArgb(246, 248, 250);
+        public static readonly Color Light_PanelColor = Color.FromArgb(235, 245, 255);
+        public static readonly Color Light_ForeColor = Color.FromArgb(45, 45, 48);
+        public static readonly Color Light_AccentColor = Color.FromArgb(0, 122, 204);
+        public static readonly Color Light_ButtonColor = Color.FromArgb(210, 226, 245);
+        public static readonly Color Light_ButtonTextColor = Color.FromArgb(15, 15, 15);
+        public static readonly Color Light_HighlightTextColor = Color.FromArgb(70, 70, 70);
+        public static readonly Color Light_AlternatingBackColor = Color.FromArgb(251, 248, 232);
 
         // Dark theme palette
-        private static readonly Color Dark_BackColor = Color.FromArgb(34, 34, 34);
-        private static readonly Color Dark_PanelColor = Color.FromArgb(44, 44, 44);
-        private static readonly Color Dark_ForeColor = Color.FromArgb(230, 230, 230);
-        private static readonly Color Dark_AccentColor = Color.FromArgb(0x66, 0xA3, 0xFF);
-        private static readonly Color Dark_ButtonColor = Color.FromArgb(64, 64, 64);
-        private static readonly Color Dark_ButtonTextColor = Color.White;
-        private static readonly Color Dark_HighlightTextColor = Color.White;
-        private static readonly Color Dark_AlternatingBackColor = Color.FromArgb(52, 52, 52);
+        public static readonly Color Dark_BackColor = Color.FromArgb(34, 34, 34);
+        public static readonly Color Dark_PanelColor = Color.FromArgb(44, 44, 44);
+        public static readonly Color Dark_ForeColor = Color.FromArgb(230, 230, 230);
+        public static readonly Color Dark_AccentColor = Color.FromArgb(0x66, 0xA3, 0xFF);
+        public static readonly Color Dark_ButtonColor = Color.FromArgb(64, 64, 64);
+        public static readonly Color Dark_ButtonTextColor = Color.White;
+        public static readonly Color Dark_HighlightTextColor = Color.White;
+        public static readonly Color Dark_AlternatingBackColor = Color.FromArgb(52, 52, 52);
 
         // Apply theme recursively to a form and its child controls
         public static void ApplyTheme(Form form)
@@ -52,16 +52,13 @@ namespace LoreSoft.Calculator
             if (c == null) return;
             var themeDark = (CurrentTheme == ThemeMode.Dark);
 
+            // Foreground colors for labels
+            if (c is Label && c.BackColor == (themeDark ? Dark_BackColor : Light_BackColor))
+                c.ForeColor = themeDark ? Dark_ForeColor : Light_ForeColor;
+
             // Panels/GroupBox/TabPage backgrounds
             if (c is Panel || c is GroupBox || c is TabPage)
                 c.BackColor = themeDark ? Dark_PanelColor : Light_PanelColor;
-
-            // Foreground colors for labels
-            if (c is Label)
-            {
-                c.BackColor = themeDark ? Color.FromArgb(119, 136, 153) : Color.FromArgb(158, 170, 182);
-                c.ForeColor = themeDark ? Dark_ForeColor : Light_ForeColor;
-            }
 
             // Buttons
             if (c is Button btn)
@@ -110,6 +107,12 @@ namespace LoreSoft.Calculator
             {
                 ms.BackColor = themeDark ? Dark_BackColor : Light_BackColor;
                 ms.ForeColor = themeDark ? Dark_ForeColor : Light_ForeColor;
+                ms.RenderMode = ToolStripRenderMode.ManagerRenderMode;
+
+                // foreach (var item in ms.Items)
+                // {
+                //     ApplyThemeToToolStripItem(item);
+                // }
             }
             if (c is ToolStrip ts)
             {
@@ -121,6 +124,23 @@ namespace LoreSoft.Calculator
             foreach (Control child in c.Controls)
             {
                 ApplyThemeToControl(child);
+            }
+        }
+
+        public static void ApplyThemeToToolStripItem(object item)
+        {
+            if (item is ToolStripItem tsi)
+            {
+                tsi.BackColor = CurrentTheme == ThemeMode.Dark ? Dark_BackColor : Light_BackColor;
+                tsi.ForeColor = CurrentTheme == ThemeMode.Dark ? Dark_ForeColor : Light_ForeColor;
+            }
+
+            if (item is ToolStripMenuItem tsmi)
+            {
+                foreach (var subitem in tsmi.DropDownItems)
+                {
+                    ApplyThemeToToolStripItem(subitem);
+                }
             }
         }
 

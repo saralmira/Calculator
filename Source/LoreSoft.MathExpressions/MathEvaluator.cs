@@ -497,8 +497,8 @@ namespace LoreSoft.MathExpressions
 
         private static int Precedence(string c)
         {
-            if (c.Length == 1 && (c[0] == '*' || c[0] == '/' || c[0] == '%'))
-                return 2;
+            if (c.Length == 1)
+                return OperatorExpression.Precedence(c[0]);
 
             return 1;
         }

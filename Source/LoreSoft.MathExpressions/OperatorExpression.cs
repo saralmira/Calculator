@@ -1,6 +1,7 @@
 using System;
 using LoreSoft.MathExpressions.Properties;
 using System.Diagnostics.CodeAnalysis;
+using System.Collections.Generic;
 
 namespace LoreSoft.MathExpressions
 {
@@ -9,8 +10,18 @@ namespace LoreSoft.MathExpressions
     /// </summary>
     public class OperatorExpression : ExpressionBase
     {
+        private const int minPrecedence = 1;
+
         /// <summary>The supported math operators by this class.</summary>
-        private static readonly char[] operatorSymbols = new char[] {'+', '-', '*', '/', '%', '^'};
+        private static readonly Dictionary<char, int> operatorSymbols = new Dictionary<char, int>()
+        {
+            { '+', minPrecedence },
+            { '-', minPrecedence },
+            { '*', 2 },
+            { '/', 2 },
+            { '%', 2 },
+            { '^', 2 },
+        };
 
         /// <summary>Initializes a new instance of the <see cref="OperatorExpression"/> class.</summary>
         /// <param name="operator">The operator to use for this class.</param>
@@ -185,7 +196,7 @@ namespace LoreSoft.MathExpressions
         /// <returns><c>true</c> if the specified char is a math symbol; otherwise, <c>false</c>.</returns>
         public static bool IsSymbol(char c)
         {
-            return Array.Exists(operatorSymbols, delegate(char s) { return s == c; });
+            return operatorSymbols.ContainsKey(c);
         }
 
         /// <summary>
@@ -198,6 +209,18 @@ namespace LoreSoft.MathExpressions
         public override string ToString()
         {
             return _mathOperator.ToString();
+        }
+
+        /// <summary>
+        /// Returns precedence of an operator symbol
+        /// </summary>
+        /// <param name="c">operator symbol</param>
+        /// <returns>Precedence</returns>
+        public static int Precedence(char c)
+        {
+            if (operatorSymbols.TryGetValue(c, out var p))
+                return p;
+            return minPrecedence;
         }
     }
 }
