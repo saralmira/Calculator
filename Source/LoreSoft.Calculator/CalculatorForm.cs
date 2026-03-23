@@ -45,7 +45,6 @@ namespace LoreSoft.Calculator
             InitializeSettings();
             Application.Idle += new EventHandler(OnApplicationIdle);
             vform.Owner = this;
-            vform.Show();
             vform.Location = new Point(Location.X + Width, Location.Y);
             timer1.Stop();
 
@@ -130,6 +129,9 @@ namespace LoreSoft.Calculator
             int oldLength = historyRichTextBox.Text.Length;
             historyRichTextBox.AppendText(expression);
             // historyRichTextBox.AppendText(Environment.NewLine);
+            int maxAnsChar = 18;
+            int baseTabWidth = Math.Max(Width - 75 - maxAnsChar * 20, 300);
+            historyRichTextBox.SelectionTabs = new int[] { baseTabWidth, 15, 15, 15, 15, 15 };
             historyRichTextBox.AppendText(tabSpace);
             if (!success)
                 historyRichTextBox.SelectionColor = Color.Maroon;
@@ -322,6 +324,7 @@ namespace LoreSoft.Calculator
 
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
+            historyRichTextBox.AutoWordSelection = false;
             inputTextBox.Focus();
             inputTextBox.Select();
         }
@@ -657,6 +660,11 @@ namespace LoreSoft.Calculator
         private void toggleThemeToolStripButton_Click(object sender, EventArgs e)
         {
             ThemeManager.ToggleTheme();
+        }
+
+        private void CalculatorForm_Shown(object sender, EventArgs e)
+        {
+            vform.Show();
         }
     }
 }
