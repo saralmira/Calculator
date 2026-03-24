@@ -32,6 +32,7 @@ namespace LoreSoft.Calculator
         private Stopwatch watch = new Stopwatch();
         private VariablesForm vform = new VariablesForm();
         private bool lockTextChange = false;
+        private bool lockClearVariables = false;
 
         public CalculatorForm()
         {
@@ -186,7 +187,7 @@ namespace LoreSoft.Calculator
                 Unlock();
         }
 
-        public void EvaluateRichTextBox(bool ignoreRegular = false)
+        public void EvaluateRichTextBox(bool clearVariables = true, bool ignoreRegular = false, bool outputVariables = true)
         {
             if (!Lock())
                 return;
@@ -205,7 +206,7 @@ namespace LoreSoft.Calculator
                 currentIndent = Math.Max(0, currentSel - (frontStr.LastIndexOf('\n') + 1));
             }
 
-            if (!ignoreRegular)
+            if (clearVariables)
                 InitVariables();
 
             using (StringReader sr = new StringReader(currentText))
@@ -241,7 +242,7 @@ namespace LoreSoft.Calculator
                         {
                             var variableName = expression.Substring(0, eId).Trim();
                             if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out double variableValue))
-                                expression = variableName + "=" + variableValue.ToString();
+                                expression = variableName + " = " + variableValue.ToString();
                         }
                     }
 
@@ -270,8 +271,8 @@ namespace LoreSoft.Calculator
                 historyRichTextBox.SelectionStart = row_begin + currentIndent;
             }
 
-            if (!ignoreRegular)
-                vform.OutputVariable(GetVariables());
+            if (!ignoreRegular && outputVariables)
+                vform.OutputVariable(GetVariables(), true);
 
             Unlock();
 
@@ -296,7 +297,7 @@ namespace LoreSoft.Calculator
                 var r = _eval.Evaluate(input);
                 answer = r.Result.ToString();
                 regular = r.Regular;
-                vform.OutputVariable(GetVariables());
+                vform.OutputVariable(GetVariables(), true);
             }
             catch (Exception ex)
             {
@@ -336,7 +337,7 @@ namespace LoreSoft.Calculator
             // Ctrl+T toggles the theme
             if (e.Control && e.KeyCode == Keys.T)
             {
-                ThemeManager.ToggleTheme();
+                toggleThemeToolStripButton_Click(sender, e);
                 e.Handled = true;
             }
         }
@@ -661,11 +662,13 @@ namespace LoreSoft.Calculator
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            EvaluateRichTextBox();
+            EvaluateRichTextBox(!lockClearVariables);
+            lockClearVariables = false;
         }
 
         private void toggleThemeToolStripButton_Click(object sender, EventArgs e)
         {
+            lockClearVariables = true;
             ThemeManager.ToggleTheme();
         }
 

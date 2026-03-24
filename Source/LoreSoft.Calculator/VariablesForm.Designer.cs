@@ -79,6 +79,7 @@
             this.Column1.HeaderText = "变量名";
             this.Column1.MinimumWidth = 9;
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 116;
             // 
             // Column2
