@@ -131,7 +131,7 @@ namespace LoreSoft.Calculator
             // historyRichTextBox.AppendText(Environment.NewLine);
             int maxAnsChar = 18;
             int baseTabWidth = Math.Max(Width - 75 - maxAnsChar * 20, 300);
-            historyRichTextBox.SelectionTabs = new int[] { baseTabWidth, 15, 15, 15, 15, 15 };
+            historyRichTextBox.SelectionTabs = new int[] { baseTabWidth, baseTabWidth + 15, baseTabWidth + 15, baseTabWidth + 15, baseTabWidth + 15 };
             historyRichTextBox.AppendText(tabSpace);
             if (!success)
                 historyRichTextBox.SelectionColor = Color.Maroon;
@@ -205,11 +205,13 @@ namespace LoreSoft.Calculator
                 currentIndent = Math.Max(0, currentSel - (frontStr.LastIndexOf('\n') + 1));
             }
 
+            if (!ignoreRegular)
+                InitVariables();
+
             using (StringReader sr = new StringReader(currentText))
             {
                 int row = 0;
                 int row_begin = 0;
-                var variables = GetVariables();
 
                 watch.Reset();
                 watch.Start();
@@ -223,7 +225,7 @@ namespace LoreSoft.Calculator
                     if (tab_id > -1)
                         expression = expression.Substring(0, tab_id);
 
-                    if (string.IsNullOrEmpty(expression))
+                    if (string.IsNullOrEmpty(expression.Trim()))
                     {
                         var append = Environment.NewLine;
                         historyRichTextBox.AppendText(append);
@@ -238,7 +240,7 @@ namespace LoreSoft.Calculator
                         if (eId > -1)
                         {
                             var variableName = expression.Substring(0, eId).Trim();
-                            if (!string.IsNullOrEmpty(variableName) && variables.TryGetValue(variableName, out double variableValue))
+                            if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out double variableValue))
                                 expression = variableName + "=" + variableValue.ToString();
                         }
                     }
@@ -386,6 +388,11 @@ namespace LoreSoft.Calculator
         public VariableDictionary GetVariables()
         {
             return _eval.Variables;
+        }
+
+        public void InitVariables()
+        {
+            _eval.InitVariables();
         }
 
         private void inputTextBox_KeyPress(object sender, KeyPressEventArgs e)

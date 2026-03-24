@@ -36,7 +36,7 @@ namespace LoreSoft.MathExpressions
             get { return _value; }
         }
 
-private bool _isVariable;
+        private bool _isVariable;
         /// <summary>
         /// Gets a value indicating whether this expression represents a variable.
         /// </summary>

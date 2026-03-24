@@ -109,6 +109,11 @@ namespace LoreSoft.MathExpressions
             public bool Regular;
         }
 
+        public void InitVariables()
+        {
+            _variables = new VariableDictionary(this);
+        }
+
         /// <summary>Evaluates the specified expression.</summary>
         /// <param name="expression">The expression to evaluate.</param>
         /// <returns>The result of the evaluated expression.</returns>
@@ -438,15 +443,25 @@ namespace LoreSoft.MathExpressions
             _buffer.Append(_currentChar);
 
             char p = (char)_expressionReader.Peek();
-            while (NumberExpression.IsNumber(p))
+            bool hasNote = false;
+            bool isNote = false;
+            bool lastIsNote = false;
+
+            while (NumberExpression.IsNumber(p) 
+                || ((isNote = p == 'E' || p == 'e') && !hasNote)
+                || (lastIsNote && (p == '-' || p == '+')))
             {
-                _currentChar = (char) _expressionReader.Read();
+                if (isNote)
+                    hasNote = true;
+                lastIsNote = isNote;
+                isNote = false;
+
+                _currentChar = (char)_expressionReader.Read();
                 _buffer.Append(_currentChar);
                 p = (char)_expressionReader.Peek();
             }
 
-            double value;
-            if (!(double.TryParse(_buffer.ToString(), out value)))
+            if (!(double.TryParse(_buffer.ToString(), out double value)))
                 throw new ParseException(Resources.InvalidNumberFormat + _buffer);
 
             NumberExpression expression = new NumberExpression(value);

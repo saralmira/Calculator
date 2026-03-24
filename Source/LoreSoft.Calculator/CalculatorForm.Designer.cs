@@ -798,7 +798,7 @@ namespace LoreSoft.Calculator
             this.historyPanel.Location = new System.Drawing.Point(0, 86);
             this.historyPanel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.historyPanel.Name = "historyPanel";
-            this.historyPanel.Size = new System.Drawing.Size(704, 317);
+            this.historyPanel.Size = new System.Drawing.Size(704, 314);
             this.historyPanel.TabIndex = 5;
             // 
             // historyRichTextBox
@@ -809,10 +809,10 @@ namespace LoreSoft.Calculator
             this.historyRichTextBox.DetectUrls = false;
             this.historyRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.historyRichTextBox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.historyRichTextBox.Location = new System.Drawing.Point(0, 37);
+            this.historyRichTextBox.Location = new System.Drawing.Point(0, 40);
             this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.historyRichTextBox.Name = "historyRichTextBox";
-            this.historyRichTextBox.Size = new System.Drawing.Size(704, 280);
+            this.historyRichTextBox.Size = new System.Drawing.Size(704, 274);
             this.historyRichTextBox.TabIndex = 1;
             this.historyRichTextBox.Text = "";
             this.historyRichTextBox.TextChanged += new System.EventHandler(this.historyRichTextBox_TextChanged);
@@ -855,13 +855,13 @@ namespace LoreSoft.Calculator
             // 
             this.historyLabel.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.historyLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.historyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.historyLabel.Font = new System.Drawing.Font("微软雅黑", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.historyLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.historyLabel.Location = new System.Drawing.Point(0, 0);
             this.historyLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.historyLabel.Name = "historyLabel";
             this.historyLabel.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
-            this.historyLabel.Size = new System.Drawing.Size(704, 37);
+            this.historyLabel.Size = new System.Drawing.Size(704, 40);
             this.historyLabel.TabIndex = 0;
             this.historyLabel.Text = "历史记录";
             this.historyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -870,13 +870,13 @@ namespace LoreSoft.Calculator
             // 
             this.inputLabel.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.inputLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputLabel.Font = new System.Drawing.Font("微软雅黑", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inputLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.inputLabel.Location = new System.Drawing.Point(0, 403);
+            this.inputLabel.Location = new System.Drawing.Point(0, 400);
             this.inputLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.inputLabel.Name = "inputLabel";
             this.inputLabel.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
-            this.inputLabel.Size = new System.Drawing.Size(704, 37);
+            this.inputLabel.Size = new System.Drawing.Size(704, 40);
             this.inputLabel.TabIndex = 2;
             this.inputLabel.Text = "输入";
             this.inputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -982,7 +982,7 @@ namespace LoreSoft.Calculator
             // answerToolStripStatusLabel
             // 
             this.answerToolStripStatusLabel.Name = "answerToolStripStatusLabel";
-            this.answerToolStripStatusLabel.Size = new System.Drawing.Size(413, 28);
+            this.answerToolStripStatusLabel.Size = new System.Drawing.Size(467, 28);
             this.answerToolStripStatusLabel.Spring = true;
             this.answerToolStripStatusLabel.Text = "就绪";
             this.answerToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
