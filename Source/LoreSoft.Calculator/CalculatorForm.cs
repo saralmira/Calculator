@@ -675,6 +675,7 @@ namespace LoreSoft.Calculator
         private void CalculatorForm_Shown(object sender, EventArgs e)
         {
             vform.Show();
+            this.Focus();
         }
     }
 }
