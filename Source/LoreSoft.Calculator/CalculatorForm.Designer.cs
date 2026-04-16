@@ -812,6 +812,7 @@ namespace LoreSoft.Calculator
             this.historyRichTextBox.Location = new System.Drawing.Point(0, 40);
             this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.historyRichTextBox.Name = "historyRichTextBox";
+            this.historyRichTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.historyRichTextBox.Size = new System.Drawing.Size(704, 274);
             this.historyRichTextBox.TabIndex = 1;
             this.historyRichTextBox.Text = "";
