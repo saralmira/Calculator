@@ -20,7 +20,7 @@ namespace LoreSoft.MathExpressions
             { '*', 2 },
             { '/', 2 },
             { '%', 2 },
-            { '^', 2 },
+            { '^', 3 },
         };
 
         /// <summary>Initializes a new instance of the <see cref="OperatorExpression"/> class.</summary>
