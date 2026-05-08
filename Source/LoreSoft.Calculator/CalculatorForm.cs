@@ -228,10 +228,10 @@ namespace LoreSoft.Calculator
 
                     if (string.IsNullOrEmpty(expression.Trim()))
                     {
-                        var append = Environment.NewLine;
-                        historyRichTextBox.AppendText(append);
+                        int oldLen = historyRichTextBox.Text.Length;
+                        historyRichTextBox.AppendText(Environment.NewLine);
                         if (++row <= currentRow)
-                            row_begin += append.Length;
+                            row_begin += historyRichTextBox.Text.Length - oldLen;
                         continue;
                     }
 
