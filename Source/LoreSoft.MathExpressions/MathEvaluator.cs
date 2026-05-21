@@ -16,7 +16,7 @@ namespace LoreSoft.MathExpressions
     /// <code>
     /// MathEvaluator eval = new MathEvaluator();
     /// //basic math
-    /// double result = eval.Evaluate("(2 + 1) * (1 + 2)");
+    /// decimal result = eval.Evaluate("(2 + 1) * (1 + 2)");
     /// //calling a function
     /// result = eval.Evaluate("sqrt(4)");
     /// //evaluate trigonometric 
@@ -38,8 +38,8 @@ namespace LoreSoft.MathExpressions
         private Queue<IExpression> _expressionQueue;
         private Dictionary<string, IExpression> _expressionCache;
         private StringBuilder _buffer;
-        private Stack<double> _calculationStack;
-        private Stack<double> _parameters;
+        private Stack<decimal> _calculationStack;
+        private Stack<decimal> _parameters;
         private List<string> _innerFunctions;
         private uint _nestedFunctionDepth;
         private uint _nestedGroupDepth;
@@ -62,8 +62,8 @@ namespace LoreSoft.MathExpressions
             _symbolStack = new Stack<string>();
             _expressionQueue = new Queue<IExpression>();
             _buffer = new StringBuilder();
-            _calculationStack = new Stack<double>();
-            _parameters = new Stack<double>(2);
+            _calculationStack = new Stack<decimal>();
+            _parameters = new Stack<decimal>(2);
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
         }
@@ -89,22 +89,22 @@ namespace LoreSoft.MathExpressions
         /// <summary>Gets the answer from the last evaluation.</summary>
         /// <value>The answer variable value.</value>
         /// <seealso cref="Variables"/>
-        public double Answer
+        public decimal Answer
 {
             get { return _variables[AnswerVariable]; }
         }
 
         /// <summary>
-        /// Ë°®Á§∫Ë°®ËææÂºèÊ±ÇÂÄºÁªìÊûúÁöÑÁªìÊûÑ‰Ωì„ÄÇ
+        /// ±Ì æ±Ì¥Ô Ω«Û÷µΩ·π˚µƒΩ·ππÃÂ°£
         /// </summary>
         public struct EvalResult
         {
             /// <summary>
-            /// Ê±ÇÂÄºÁªìÊûú„ÄÇ
+            /// «Û÷µΩ·π˚°£
             /// </summary>
-            public double Result;
+            public decimal Result;
             /// <summary>
-            /// ÊòØÂê¶‰∏∫Â∏∏ËßÑË°®ËææÂºèÔºàÈùûÂèòÈáèËµãÂÄºÔºâ„ÄÇ
+            ///  «∑ÒŒ™≥£πÊ±Ì¥Ô Ω£®∑«±‰¡ø∏≥÷µ£©°£
             /// </summary>
             public bool Regular;
         }
@@ -147,7 +147,7 @@ namespace LoreSoft.MathExpressions
 
             ParseExpressionToQueue();
 
-            double result = CalculateFromQueue();
+            var result = CalculateFromQueue();
 
             _variables[AnswerVariable] = result;
 
@@ -295,7 +295,7 @@ namespace LoreSoft.MathExpressions
 
             if (_variables.ContainsKey(_buffer.ToString()))
             {
-                double value = _variables[_buffer.ToString()];
+                var value = _variables[_buffer.ToString()];
                 NumberExpression expression = new NumberExpression(value, true);
                 _expressionQueue.Enqueue(expression);
 
@@ -461,7 +461,7 @@ namespace LoreSoft.MathExpressions
                 p = (char)_expressionReader.Peek();
             }
 
-            if (!(double.TryParse(_buffer.ToString(), out double value)))
+            if (!(decimal.TryParse(_buffer.ToString(), out decimal value)))
                 throw new ParseException(Resources.InvalidNumberFormat + _buffer);
 
             NumberExpression expression = new NumberExpression(value);
@@ -518,9 +518,9 @@ namespace LoreSoft.MathExpressions
             return 1;
         }
 
-        private double CalculateFromQueue()
+        private decimal CalculateFromQueue()
         {
-            double result;
+            decimal result;
             _calculationStack.Clear();
 
             foreach (IExpression expression in _expressionQueue)

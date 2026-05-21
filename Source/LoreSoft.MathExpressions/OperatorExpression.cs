@@ -85,11 +85,11 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Add(double[] numbers)
+        public decimal Add(decimal[] numbers)
         {
             base.Validate(numbers);
-            double result = 0;
-            foreach (double n in numbers)
+            decimal result = 0;
+            foreach (var n in numbers)
                 result += n;
 
             return result;
@@ -100,11 +100,11 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Subtract(double[] numbers)
+        public decimal Subtract(decimal[] numbers)
         {
             base.Validate(numbers);
-            double? result = null;
-            foreach (double n in numbers)
+            decimal? result = null;
+            foreach (var n in numbers)
                 if (result.HasValue)
                     result -= n;
                 else
@@ -118,11 +118,11 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Multiple(double[] numbers)
+        public decimal Multiple(decimal[] numbers)
         {
             base.Validate(numbers);
-            double? result = null;
-            foreach (double n in numbers)
+            decimal? result = null;
+            foreach (var n in numbers)
                 if (result.HasValue)
                     result *= n;
                 else
@@ -136,11 +136,11 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Divide(double[] numbers)
+        public decimal Divide(decimal[] numbers)
         {
             base.Validate(numbers);
-            double? result = null;
-            foreach (double n in numbers)
+            decimal? result = null;
+            foreach (var n in numbers)
                 if (result.HasValue)
                     result /= n;
                 else
@@ -154,11 +154,11 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Modulo(double[] numbers)
+        public decimal Modulo(decimal[] numbers)
         {
             base.Validate(numbers);
-            double? result = null;
-            foreach (double n in numbers)
+            decimal? result = null;
+            foreach (var n in numbers)
                 if (result.HasValue)
                     result %= n;
                 else
@@ -172,10 +172,10 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the operation.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Power(double[] numbers)
+        public decimal Power(decimal[] numbers)
         {
             base.Validate(numbers);
-            return Math.Pow(numbers[0], numbers[1]);
+            return (decimal)Math.Pow((double)numbers[0], (double)numbers[1]);
         }
 
         /// <summary>Determines whether the specified string is a math symbol.</summary>

@@ -38,16 +38,16 @@ namespace LoreSoft.MathExpressions.UnitConversion
     public static class VolumeConverter
     {
         // In enum order
-        private static readonly double[] factors = new double[]
+        private static readonly decimal[] factors = new decimal[]
             {
-                0.000001d,  			//milliliter
-                0.001d,  			    //liter
-                1d,  				    //kiloliter
-                0.0037854118d/128d, 	//ounce [US, liquid]
-                0.0037854118d/16d,  	//cup [US]
-                0.0037854118d/8d,  	    //pint [US, liquid]
-                0.0037854118d/4d,  	    //quart [US, liquid]
-                0.0037854118d,  		//gallon [US, liquid]
+                (decimal)0.000001d,  			//milliliter
+                (decimal)0.001d,  			    //liter
+                (decimal)1d,  				    //kiloliter
+                (decimal)(0.0037854118d/128d), 	//ounce [US, liquid]
+                (decimal)(0.0037854118d/16d),  	//cup [US]
+                (decimal)(0.0037854118d/8d),  	    //pint [US, liquid]
+                (decimal)(0.0037854118d/4d),  	    //quart [US, liquid]
+                (decimal)0.0037854118d,  		//gallon [US, liquid]
             };
 
         /// <summary>
@@ -57,17 +57,17 @@ namespace LoreSoft.MathExpressions.UnitConversion
         /// <param name="toUnit">Covert to unit.</param>
         /// <param name="fromValue">Covert from value.</param>
         /// <returns>The converted value.</returns>
-        public static double Convert(
+        public static decimal Convert(
             VolumeUnit fromUnit,
             VolumeUnit toUnit,
-            double fromValue)
+            decimal fromValue)
         {
             if (fromUnit == toUnit)
                 return fromValue;
 
-            double fromFactor = factors[(int)fromUnit];
-            double toFactor = factors[(int)toUnit];
-            double result = fromFactor * fromValue / toFactor;
+            var fromFactor = factors[(int)fromUnit];
+            var toFactor = factors[(int)toUnit];
+            var result = fromFactor * fromValue / toFactor;
             return result;
         }
     }

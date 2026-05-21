@@ -24,7 +24,7 @@ namespace LoreSoft.MathExpressions
         /// <param name="numbers">The numbers to validate.</param>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        protected void Validate(double[] numbers)
+        protected void Validate(decimal[] numbers)
         {
             if (numbers == null)
                 throw new ArgumentNullException("numbers");

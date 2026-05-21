@@ -14,7 +14,7 @@ namespace LoreSoft.MathExpressions
     /// Variable names can only contain letters, numbers and symbols are not allowed.
     /// </remarks>
     [Serializable]
-    public class VariableDictionary : Dictionary<string, double>
+    public class VariableDictionary : Dictionary<string, decimal>
     {
         private MathEvaluator _evaluator;
 
@@ -25,8 +25,8 @@ namespace LoreSoft.MathExpressions
         {
             _evaluator = evaluator;
             base.Add(MathEvaluator.AnswerVariable, 0);
-            base.Add("pi", Math.PI);
-            base.Add("e", Math.E);
+            base.Add("pi", (decimal)Math.PI);
+            base.Add("e", (decimal)Math.E);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace LoreSoft.MathExpressions
         /// <seealso cref="MathEvaluator"/>
         /// <seealso cref="MathEvaluator.Variables"/>
         /// <seealso cref="MathEvaluator.Functions"/>
-        public new void Add(string name, double value)
+        public new void Add(string name, decimal value)
         {
             Validate(name);
             base.Add(name, value);

@@ -37,16 +37,16 @@ namespace LoreSoft.MathExpressions.UnitConversion
     public static class LengthConverter
     {
         // In enum order
-        private static readonly double[] factors = new double[]
+        private static readonly decimal[] factors = new decimal[]
             {
-                0.001d,          //millimeter
-                0.01d,           //centimeter
-                1d,              //meter
-                1000d,           //kilometer
-                0.3048d/12d,      //inch
-                0.3048d,         //feet
-                0.9144d,         //yard
-                0.3048d*5280d,    //mile
+                (decimal)0.001d,          //millimeter
+                (decimal)0.01d,           //centimeter
+                (decimal)1d,              //meter
+                (decimal)1000d,           //kilometer
+                (decimal)(0.3048d/12d),      //inch
+                (decimal)0.3048d,         //feet
+                (decimal)0.9144d,         //yard
+                (decimal)(0.3048d*5280d),    //mile
             };
 
 
@@ -57,17 +57,17 @@ namespace LoreSoft.MathExpressions.UnitConversion
         /// <param name="toUnit">Covert to unit.</param>
         /// <param name="fromValue">Covert from value.</param>
         /// <returns>The converted value.</returns>
-        public static double Convert(
+        public static decimal Convert(
             LengthUnit fromUnit,
             LengthUnit toUnit,
-            double fromValue)
+            decimal fromValue)
         {
             if (fromUnit == toUnit)
                 return fromValue; 
             
-            double fromFactor = factors[(int)fromUnit];
-            double toFactor = factors[(int) toUnit];
-            double result = fromFactor * fromValue / toFactor;
+            var fromFactor = (decimal)factors[(int)fromUnit];
+            var toFactor = (decimal)factors[(int) toUnit];
+            var result = fromFactor * fromValue / toFactor;
             return result;
         }
 

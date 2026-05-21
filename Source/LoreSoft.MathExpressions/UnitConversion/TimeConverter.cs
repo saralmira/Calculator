@@ -39,10 +39,10 @@ namespace LoreSoft.MathExpressions.UnitConversion
         /// <param name="toUnit">Covert to unit.</param>
         /// <param name="fromValue">Covert from value.</param>
         /// <returns>The converted value.</returns>
-        public static double Convert(
+        public static decimal Convert(
             TimeUnit fromUnit,
             TimeUnit toUnit,
-            double fromValue)
+            decimal fromValue)
         {
             if (fromUnit == toUnit)
                 return fromValue; 
@@ -51,22 +51,22 @@ namespace LoreSoft.MathExpressions.UnitConversion
             switch (fromUnit)
             {
                 case TimeUnit.Millisecond:
-                    span = TimeSpan.FromMilliseconds(fromValue);
+                    span = TimeSpan.FromMilliseconds((double)fromValue);
                     break;
                 case TimeUnit.Second:
-                    span = TimeSpan.FromSeconds(fromValue);
+                    span = TimeSpan.FromSeconds((double)fromValue);
                     break;
                 case TimeUnit.Minute:
-                    span = TimeSpan.FromMinutes(fromValue);
+                    span = TimeSpan.FromMinutes((double)fromValue);
                     break;
                 case TimeUnit.Hour:
-                    span = TimeSpan.FromHours(fromValue);
+                    span = TimeSpan.FromHours((double)fromValue);
                     break;
                 case TimeUnit.Day:
-                    span = TimeSpan.FromDays(fromValue);
+                    span = TimeSpan.FromDays((double)fromValue);
                     break;
                 case TimeUnit.Week:
-                    span = TimeSpan.FromDays(fromValue * 7d);
+                    span = TimeSpan.FromDays((double)(fromValue * (decimal)7d));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("fromUnit");
@@ -75,17 +75,17 @@ namespace LoreSoft.MathExpressions.UnitConversion
             switch (toUnit)
             {
                 case TimeUnit.Millisecond:
-                    return span.TotalMilliseconds;
+                    return (decimal)span.TotalMilliseconds;
                 case TimeUnit.Second:
-                    return span.TotalSeconds;
+                    return (decimal)span.TotalSeconds;
                 case TimeUnit.Minute:
-                    return span.TotalMinutes;
+                    return (decimal)span.TotalMinutes;
                 case TimeUnit.Hour:
-                    return span.TotalHours;
+                    return (decimal)span.TotalHours;
                 case TimeUnit.Day:
-                    return span.TotalDays;
+                    return (decimal)span.TotalDays;
                 case TimeUnit.Week:
-                    return span.TotalDays / 7d;
+                    return (decimal)(span.TotalDays / 7d);
                 default:
                     throw new ArgumentOutOfRangeException("toUnit");
             }

@@ -1,4 +1,4 @@
-﻿using LoreSoft.MathExpressions;
+using LoreSoft.MathExpressions;
 using System.Windows.Forms;
 
 namespace LoreSoft.Calculator
@@ -22,7 +22,7 @@ namespace LoreSoft.Calculator
                 var value = r.Cells[1].EditedFormattedValue as string;
                 if (string.IsNullOrEmpty(value))
                     continue;
-                dict[name] = double.Parse(value);
+                dict[name] = decimal.Parse(value);
             }
         }
 
@@ -68,7 +68,7 @@ namespace LoreSoft.Calculator
             this.ResumeLayout();
         }
 
-        public void UpdateVariable(string name, double value)
+        public void UpdateVariable(string name, decimal value)
         {
             if (name == null)
                 return;
@@ -106,7 +106,7 @@ namespace LoreSoft.Calculator
                     var value = dataGridView1.Rows[row].Cells[1].Value as string;
                     if (!string.IsNullOrEmpty(value)
                         && !string.IsNullOrEmpty(name)
-                        && double.TryParse(value, out double dbl))
+                        && decimal.TryParse(value, out var dbl))
                     {
                         cForm.GetVariables()[name] = dbl;
                         cForm.EvaluateRichTextBox(false, false, true);

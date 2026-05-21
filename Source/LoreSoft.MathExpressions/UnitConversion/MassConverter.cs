@@ -1,4 +1,5 @@
 using LoreSoft.MathExpressions.Metadata;
+using System;
 namespace LoreSoft.MathExpressions.UnitConversion
 {
     /// <summary>Units for Mass</summary>
@@ -30,14 +31,14 @@ namespace LoreSoft.MathExpressions.UnitConversion
     public static class MassConverter
     {
         // In enum order
-        private static readonly double[] factors = new double[]
+        private static readonly decimal[] factors = new decimal[]
             {
-                0.000001d,           //milligram
-                0.001d,              //gram
-                1d,                  //kilogram
-                0.45359237d/16d,      //ounce
-                0.45359237d,         //pound
-                0.45359237d*2000d,    //ton [short, US]      
+                (decimal)0.000001d,           //milligram
+                (decimal)0.001d,              //gram
+                (decimal)1d,                  //kilogram
+                (decimal)(0.45359237d/16d),      //ounce
+                (decimal)0.45359237d,         //pound
+                (decimal)(0.45359237d*2000d),    //ton [short, US]      
             };
 
         /// <summary>
@@ -47,17 +48,17 @@ namespace LoreSoft.MathExpressions.UnitConversion
         /// <param name="toUnit">Covert to unit.</param>
         /// <param name="fromValue">Covert from value.</param>
         /// <returns>The converted value.</returns>
-        public static double Convert(
+        public static decimal Convert(
             MassUnit fromUnit,
             MassUnit toUnit,
-            double fromValue)
+            decimal fromValue)
         {
             if (fromUnit == toUnit)
                 return fromValue;
 
-            double fromFactor = factors[(int)fromUnit];
-            double toFactor = factors[(int)toUnit];
-            double result = fromFactor * fromValue / toFactor;
+            var fromFactor = (decimal)factors[(int)fromUnit];
+            var toFactor = (decimal)factors[(int)toUnit];
+            var result = fromFactor * fromValue / toFactor;
             return result;
         }
        

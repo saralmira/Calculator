@@ -1,4 +1,5 @@
 using LoreSoft.MathExpressions.Metadata;
+using System;
 using System.ComponentModel;
 namespace LoreSoft.MathExpressions.UnitConversion
 {
@@ -35,14 +36,14 @@ namespace LoreSoft.MathExpressions.UnitConversion
     public static class SpeedConverter
     {
         // In enum order
-        private static readonly double[] factors = new double[]
+        private static readonly decimal[] factors = new decimal[]
             {
-                1d,                         //meter/second
-                1000d/3600d,                //kilometer/hour
-                0.3048d,                    //foot/second
-                (0.3048d*5280d)/3600d,      //mile/hour (mph)
-                1852d/3600d,                //knot
-                340.29d,                    //mach
+                (decimal)1d,                         //meter/second
+                (decimal)(1000d/3600d),                //kilometer/hour
+                (decimal)(0.3048d),                    //foot/second
+                (decimal)((0.3048d*5280d)/3600d),      //mile/hour (mph)
+                (decimal)(1852d/3600d),                //knot
+                (decimal)(340.29d),                    //mach
             };
 
 
@@ -53,17 +54,17 @@ namespace LoreSoft.MathExpressions.UnitConversion
         /// <param name="toUnit">Covert to unit.</param>
         /// <param name="fromValue">Covert from value.</param>
         /// <returns>The converted value.</returns>
-        public static double Convert(
+        public static decimal Convert(
             SpeedUnit fromUnit,
             SpeedUnit toUnit,
-            double fromValue)
+            decimal fromValue)
         {
             if (fromUnit == toUnit)
                 return fromValue;
 
-            double fromFactor = factors[(int)fromUnit];
-            double toFactor = factors[(int)toUnit];
-            double result = fromFactor * fromValue / toFactor;
+            var fromFactor = (decimal)factors[(int)fromUnit];
+            var toFactor = (decimal)factors[(int)toUnit];
+            var result = fromFactor * fromValue / toFactor;
             return result;
         }
         

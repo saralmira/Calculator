@@ -47,10 +47,10 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the convertion execution.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Convert(double[] numbers)
+        public decimal Convert(decimal[] numbers)
         {
             base.Validate(numbers);
-            double fromValue = numbers[0];
+            var fromValue = numbers[0];
 
             switch (current.UnitType)
             {

@@ -63,15 +63,15 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the function execution.</returns>
         /// <exception cref="ArgumentNullException">When numbers is null.</exception>
         /// <exception cref="ArgumentException">When the length of numbers do not equal <see cref="ArgumentCount"/>.</exception>
-        public double Execute(double[] numbers)
+        public decimal Execute(decimal[] numbers)
         {
             base.Validate(numbers);
 
-            Type[] desiredMethodSignatureArgs = {typeof (double)};
+            Type[] desiredMethodSignatureArgs = {typeof (decimal) };
 
             if (IsTwoArgumentFunction(_function))
             {
-                desiredMethodSignatureArgs = new []{typeof (double), typeof (double)};
+                desiredMethodSignatureArgs = new []{typeof (decimal), typeof (decimal) };
             }
 
             string function = char.ToUpperInvariant(_function[0]) + _function.Substring(1);
@@ -89,7 +89,7 @@ namespace LoreSoft.MathExpressions
 
             object[] parameters = new object[numbers.Length];
             Array.Copy(numbers, parameters, numbers.Length);
-            return (double) method.Invoke(null, parameters);
+            return (decimal) method.Invoke(null, parameters);
         }
 
         /// <summary>Gets the number of arguments this expression uses.</summary>

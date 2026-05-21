@@ -81,8 +81,8 @@ namespace LoreSoft.Calculator
 
         private void OnApplicationIdle(object sender, EventArgs e)
         {
-            numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "æ•°å­—é”å®š" : string.Empty;
-            answerToolStripStatusLabel.Text = "ç­”æ¡ˆ: " + _eval.Answer;
+            numLockToolStripStatusLabel.Text = NativeMethods.IsNumLockOn ? "Êý×ÖËø¶¨" : string.Empty;
+            answerToolStripStatusLabel.Text = "´ð°¸: " + _eval.Answer;
 
             undoToolStripMenuItem.Enabled = inputTextBox.ContainsFocus && inputTextBox.CanUndo;
             undoToolStripButton.Enabled = undoToolStripMenuItem.Enabled;
@@ -241,7 +241,7 @@ namespace LoreSoft.Calculator
                         if (eId > -1)
                         {
                             var variableName = expression.Substring(0, eId).Trim();
-                            if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out double variableValue))
+                            if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out var variableValue))
                                 expression = variableName + " = " + variableValue.ToString();
                         }
                     }
@@ -266,7 +266,7 @@ namespace LoreSoft.Calculator
                 }
 
                 watch.Stop();
-                timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " æ¯«ç§’";
+                timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " ºÁÃë";
 
                 historyRichTextBox.SelectionStart = row_begin + currentIndent;
             }
@@ -305,7 +305,7 @@ namespace LoreSoft.Calculator
                 hasError = true;
             }
             watch.Stop();
-            timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " æ¯«ç§’";
+            timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " ºÁÃë";
 
             // EvaluateAll();
 

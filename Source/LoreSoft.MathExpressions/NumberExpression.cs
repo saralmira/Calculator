@@ -10,7 +10,7 @@ namespace LoreSoft.MathExpressions
 /// <summary>Initializes a new instance of the <see cref="NumberExpression"/> class.</summary>
         /// <param name="value">The number value for this expression.</param>
         /// <param name="variable">Whether this expression represents a variable.</param>
-        public NumberExpression(double value, bool variable = false)
+        public NumberExpression(decimal value, bool variable = false)
         {
             _value = value;
             _isVariable = variable;
@@ -27,11 +27,11 @@ namespace LoreSoft.MathExpressions
             get { return 0; }
         }
 
-        private double _value;
+        private decimal _value;
 
         /// <summary>Gets the number value for this expression.</summary>
         /// <value>The number value.</value>
-        public double Value
+        public decimal Value
         {
             get { return _value; }
         }
