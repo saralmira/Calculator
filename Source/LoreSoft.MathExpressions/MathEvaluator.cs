@@ -461,8 +461,13 @@ namespace LoreSoft.MathExpressions
                 p = (char)_expressionReader.Peek();
             }
 
-            if (!(decimal.TryParse(_buffer.ToString(), out decimal value)))
-                throw new ParseException(Resources.InvalidNumberFormat + _buffer);
+            if (!decimal.TryParse(_buffer.ToString(), out var value))
+            {
+                if (!double.TryParse(_buffer.ToString(), out var value2))
+                    throw new ParseException(Resources.InvalidNumberFormat + _buffer);
+
+                value = (decimal)value2;
+            }
 
             NumberExpression expression = new NumberExpression(value);
             _expressionQueue.Enqueue(expression);

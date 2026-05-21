@@ -119,7 +119,7 @@ namespace LoreSoft.Calculator
                     variableName = variableName.Substring(0, id).Trim();
 
                 success = GetVariables().TryGetValue(variableName, out var value);
-                answer = value.ToString();
+                answer = ToString(value);
             }
 
             AppendData(data.Expression, success, answer);
@@ -165,7 +165,7 @@ namespace LoreSoft.Calculator
                     try
                     {
                         var r = _eval.Evaluate(data.Expression);
-                        line_ans = r.Result.ToString();
+                        line_ans = ToString(r.Result);
                     }
                     catch (Exception ex)
                     {
@@ -242,7 +242,7 @@ namespace LoreSoft.Calculator
                         {
                             var variableName = expression.Substring(0, eId).Trim();
                             if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out var variableValue))
-                                expression = variableName + " = " + variableValue.ToString();
+                                expression = variableName + " = " + ToString(variableValue);
                         }
                     }
 
@@ -252,7 +252,7 @@ namespace LoreSoft.Calculator
                     try
                     {
                         var r = _eval.Evaluate(expression);
-                        line_ans = r.Result.ToString();
+                        line_ans = ToString(r.Result);
                     }
                     catch (Exception ex)
                     {
@@ -295,7 +295,7 @@ namespace LoreSoft.Calculator
             {
                 vform.InputVariable(GetVariables());
                 var r = _eval.Evaluate(input);
-                answer = r.Result.ToString();
+                answer = ToString(r.Result);
                 regular = r.Regular;
                 vform.OutputVariable(GetVariables(), true);
             }
@@ -676,6 +676,11 @@ namespace LoreSoft.Calculator
         {
             vform.Show();
             this.Focus();
+        }
+
+        private static string ToString(decimal value)
+        {
+            return decimal.Round(value, 15).ToString();
         }
     }
 }
