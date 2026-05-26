@@ -149,7 +149,7 @@ namespace LoreSoft.Calculator
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(11, 3, 0, 3);
-            this.mainMenuStrip.Size = new System.Drawing.Size(704, 42);
+            this.mainMenuStrip.Size = new System.Drawing.Size(704, 38);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -160,8 +160,8 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(97, 36);
-            this.fileToolStripMenuItem.Text = "Êñá‰ª∂(&F)";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(97, 32);
+            this.fileToolStripMenuItem.Text = "Œƒº˛(&F)";
             // 
             // saveToolStripMenuItem
             // 
@@ -170,7 +170,7 @@ namespace LoreSoft.Calculator
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(357, 40);
-            this.saveToolStripMenuItem.Text = "‰øùÂ≠òÂéÜÂè≤ËÆ∞ÂΩï(&S)";
+            this.saveToolStripMenuItem.Text = "±£¥Ê¿˙ ∑º«¬º(&S)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -182,7 +182,7 @@ namespace LoreSoft.Calculator
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(357, 40);
-            this.exitToolStripMenuItem.Text = "ÈÄÄÂá∫(&X)";
+            this.exitToolStripMenuItem.Text = "ÕÀ≥ˆ(&X)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
@@ -196,8 +196,8 @@ namespace LoreSoft.Calculator
             this.toolStripSeparator4,
             this.selectAllToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(98, 36);
-            this.editToolStripMenuItem.Text = "ÁºñËæë(&E)";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
+            this.editToolStripMenuItem.Text = "±‡º≠(&E)";
             // 
             // undoToolStripMenuItem
             // 
@@ -205,7 +205,7 @@ namespace LoreSoft.Calculator
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.undoToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
-            this.undoToolStripMenuItem.Text = "Êí§ÈîÄ(&U)";
+            this.undoToolStripMenuItem.Text = "≥∑œ˙(&U)";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
@@ -220,7 +220,7 @@ namespace LoreSoft.Calculator
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
-            this.cutToolStripMenuItem.Text = "Ââ™Âàá(&T)";
+            this.cutToolStripMenuItem.Text = "ºÙ«–(&T)";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
@@ -230,7 +230,7 @@ namespace LoreSoft.Calculator
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
-            this.copyToolStripMenuItem.Text = "Â§çÂà∂(&C)";
+            this.copyToolStripMenuItem.Text = "∏¥÷∆(&C)";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
@@ -240,7 +240,7 @@ namespace LoreSoft.Calculator
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
-            this.pasteToolStripMenuItem.Text = "Á≤òË¥¥(&P)";
+            this.pasteToolStripMenuItem.Text = "’≥Ã˘(&P)";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
@@ -253,7 +253,7 @@ namespace LoreSoft.Calculator
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(279, 40);
-            this.selectAllToolStripMenuItem.Text = "ÂÖ®ÈÄâ(&A)";
+            this.selectAllToolStripMenuItem.Text = "»´—°(&A)";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
@@ -267,8 +267,8 @@ namespace LoreSoft.Calculator
             this.replaceCalculatorToolStripMenuItem,
             this.allowOnlyOneInstanceToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(103, 36);
-            this.optionsToolStripMenuItem.Text = "ÈÄâÈ°π(&O)";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(103, 32);
+            this.optionsToolStripMenuItem.Text = "—°œÓ(&O)";
             // 
             // clearHistoryToolStripMenuItem
             // 
@@ -276,7 +276,7 @@ namespace LoreSoft.Calculator
             this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
             this.clearHistoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
-            this.clearHistoryToolStripMenuItem.Text = "Ê∏ÖÈô§ÂéÜÂè≤ËÆ∞ÂΩï(&C)";
+            this.clearHistoryToolStripMenuItem.Text = "«Â≥˝¿˙ ∑º«¬º(&C)";
             this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
@@ -289,7 +289,7 @@ namespace LoreSoft.Calculator
             this.historyFontToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Font;
             this.historyFontToolStripMenuItem.Name = "historyFontToolStripMenuItem";
             this.historyFontToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
-            this.historyFontToolStripMenuItem.Text = "ÂéÜÂè≤ËÆ∞ÂΩïÂ≠ó‰Ωì(&H)...";
+            this.historyFontToolStripMenuItem.Text = "¿˙ ∑º«¬º◊÷ÃÂ(&H)...";
             this.historyFontToolStripMenuItem.Click += new System.EventHandler(this.historyFontToolStripMenuItem_Click);
             // 
             // inputFontToolStripMenuItem
@@ -297,7 +297,7 @@ namespace LoreSoft.Calculator
             this.inputFontToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Font;
             this.inputFontToolStripMenuItem.Name = "inputFontToolStripMenuItem";
             this.inputFontToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
-            this.inputFontToolStripMenuItem.Text = "ËæìÂÖ•Â≠ó‰Ωì(&I)...";
+            this.inputFontToolStripMenuItem.Text = " ‰»Î◊÷ÃÂ(&I)...";
             this.inputFontToolStripMenuItem.Click += new System.EventHandler(this.inputFontToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
@@ -310,7 +310,7 @@ namespace LoreSoft.Calculator
             this.replaceCalculatorToolStripMenuItem.CheckOnClick = true;
             this.replaceCalculatorToolStripMenuItem.Name = "replaceCalculatorToolStripMenuItem";
             this.replaceCalculatorToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
-            this.replaceCalculatorToolStripMenuItem.Text = "ÊõøÊç¢ËÆ°ÁÆóÂô®(&R)";
+            this.replaceCalculatorToolStripMenuItem.Text = "ÃÊªªº∆À„∆˜(&R)";
             this.replaceCalculatorToolStripMenuItem.Click += new System.EventHandler(this.replaceCalculatorToolStripMenuItem_Click);
             // 
             // allowOnlyOneInstanceToolStripMenuItem
@@ -318,7 +318,7 @@ namespace LoreSoft.Calculator
             this.allowOnlyOneInstanceToolStripMenuItem.CheckOnClick = true;
             this.allowOnlyOneInstanceToolStripMenuItem.Name = "allowOnlyOneInstanceToolStripMenuItem";
             this.allowOnlyOneInstanceToolStripMenuItem.Size = new System.Drawing.Size(363, 40);
-            this.allowOnlyOneInstanceToolStripMenuItem.Text = "Âè™ÂÖÅËÆ∏‰∏Ä‰∏™ÂÆû‰æã(&I)";
+            this.allowOnlyOneInstanceToolStripMenuItem.Text = "÷ª‘ –Ì“ª∏ˆ µ¿˝(&I)";
             this.allowOnlyOneInstanceToolStripMenuItem.Click += new System.EventHandler(this.allowOnlyOneInstanceToolStripMenuItem_Click);
             // 
             // functionsToolStripMenuItem
@@ -328,8 +328,8 @@ namespace LoreSoft.Calculator
             this.trigFunctionsToolStripMenuItem,
             this.logFunctionsToolStripMenuItem});
             this.functionsToolStripMenuItem.Name = "functionsToolStripMenuItem";
-            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
-            this.functionsToolStripMenuItem.Text = "ÂáΩÊï∞(&U)";
+            this.functionsToolStripMenuItem.Size = new System.Drawing.Size(102, 32);
+            this.functionsToolStripMenuItem.Text = "∫Ø ˝(&U)";
             // 
             // basicOperationsToolStripMenuItem
             // 
@@ -345,15 +345,15 @@ namespace LoreSoft.Calculator
             this.absToolStripMenuItem});
             this.basicOperationsToolStripMenuItem.Name = "basicOperationsToolStripMenuItem";
             this.basicOperationsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
-            this.basicOperationsToolStripMenuItem.Text = "Âü∫Êú¨ËøêÁÆó";
+            this.basicOperationsToolStripMenuItem.Text = "ª˘±æ‘ÀÀ„";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.addToolStripMenuItem.Tag = "+";
-            this.addToolStripMenuItem.Text = "Âä†";
-            this.addToolStripMenuItem.ToolTipText = "Â∞Ü‰∏§‰∏™Êï∞Áõ∏Âä†„ÄÇ";
+            this.addToolStripMenuItem.Text = "º”";
+            this.addToolStripMenuItem.ToolTipText = "Ω´¡Ω∏ˆ ˝œ‡º”°£";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // subtractToolStripMenuItem
@@ -361,8 +361,8 @@ namespace LoreSoft.Calculator
             this.subtractToolStripMenuItem.Name = "subtractToolStripMenuItem";
             this.subtractToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.subtractToolStripMenuItem.Tag = "-";
-            this.subtractToolStripMenuItem.Text = "Âáè";
-            this.subtractToolStripMenuItem.ToolTipText = "Â∞Ü‰∏§‰∏™Êï∞Áõ∏Âáè„ÄÇ";
+            this.subtractToolStripMenuItem.Text = "ºı";
+            this.subtractToolStripMenuItem.ToolTipText = "Ω´¡Ω∏ˆ ˝œ‡ºı°£";
             this.subtractToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // multiplyToolStripMenuItem
@@ -370,8 +370,8 @@ namespace LoreSoft.Calculator
             this.multiplyToolStripMenuItem.Name = "multiplyToolStripMenuItem";
             this.multiplyToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.multiplyToolStripMenuItem.Tag = "*";
-            this.multiplyToolStripMenuItem.Text = "‰πò";
-            this.multiplyToolStripMenuItem.ToolTipText = "Â∞Ü‰∏§‰∏™Êï∞Áõ∏‰πò„ÄÇ";
+            this.multiplyToolStripMenuItem.Text = "≥À";
+            this.multiplyToolStripMenuItem.ToolTipText = "Ω´¡Ω∏ˆ ˝œ‡≥À°£";
             this.multiplyToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // divideToolStripMenuItem
@@ -379,8 +379,8 @@ namespace LoreSoft.Calculator
             this.divideToolStripMenuItem.Name = "divideToolStripMenuItem";
             this.divideToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.divideToolStripMenuItem.Tag = "/";
-            this.divideToolStripMenuItem.Text = "Èô§";
-            this.divideToolStripMenuItem.ToolTipText = "Â∞Ü‰∏§‰∏™Êï∞Áõ∏Èô§„ÄÇ";
+            this.divideToolStripMenuItem.Text = "≥˝";
+            this.divideToolStripMenuItem.ToolTipText = "Ω´¡Ω∏ˆ ˝œ‡≥˝°£";
             this.divideToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // modulusToolStripMenuItem
@@ -388,8 +388,8 @@ namespace LoreSoft.Calculator
             this.modulusToolStripMenuItem.Name = "modulusToolStripMenuItem";
             this.modulusToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.modulusToolStripMenuItem.Tag = "%";
-            this.modulusToolStripMenuItem.Text = "ÂèñÊ®°";
-            this.modulusToolStripMenuItem.ToolTipText = "Â∞Ü‰∏§‰∏™Êï∞Áõ∏Èô§Âπ∂ËøîÂõû‰ΩôÊï∞„ÄÇ";
+            this.modulusToolStripMenuItem.Text = "»°ƒ£";
+            this.modulusToolStripMenuItem.ToolTipText = "Ω´¡Ω∏ˆ ˝œ‡≥˝≤¢∑µªÿ”‡ ˝°£";
             this.modulusToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // powerToolStripMenuItem
@@ -397,8 +397,8 @@ namespace LoreSoft.Calculator
             this.powerToolStripMenuItem.Name = "powerToolStripMenuItem";
             this.powerToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.powerToolStripMenuItem.Tag = "^";
-            this.powerToolStripMenuItem.Text = "ÂπÇ";
-            this.powerToolStripMenuItem.ToolTipText = "Â∞Ü‰∏Ä‰∏™Êï∞ÊèêÂçáÂà∞Âè¶‰∏Ä‰∏™Êï∞ÁöÑÂπÇ„ÄÇ";
+            this.powerToolStripMenuItem.Text = "√›";
+            this.powerToolStripMenuItem.ToolTipText = "Ω´“ª∏ˆ ˝Ã·…˝µΩ¡Ì“ª∏ˆ ˝µƒ√›°£";
             this.powerToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // toolStripSeparator11
@@ -411,8 +411,8 @@ namespace LoreSoft.Calculator
             this.sqrtToolStripMenuItem.Name = "sqrtToolStripMenuItem";
             this.sqrtToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.sqrtToolStripMenuItem.Tag = "sqrt(|)";
-            this.sqrtToolStripMenuItem.Text = "Âπ≥ÊñπÊ†π";
-            this.sqrtToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöÊï∞Â≠óÁöÑÂπ≥ÊñπÊ†π„ÄÇ";
+            this.sqrtToolStripMenuItem.Text = "∆Ω∑Ω∏˘";
+            this.sqrtToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂® ˝◊÷µƒ∆Ω∑Ω∏˘°£";
             this.sqrtToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // absToolStripMenuItem
@@ -420,8 +420,8 @@ namespace LoreSoft.Calculator
             this.absToolStripMenuItem.Name = "absToolStripMenuItem";
             this.absToolStripMenuItem.Size = new System.Drawing.Size(192, 40);
             this.absToolStripMenuItem.Tag = "abs(|)";
-            this.absToolStripMenuItem.Text = "ÁªùÂØπÂÄº";
-            this.absToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöÊï∞Â≠óÁöÑÁªùÂØπÂÄº„ÄÇ";
+            this.absToolStripMenuItem.Text = "æ¯∂‘÷µ";
+            this.absToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂® ˝◊÷µƒæ¯∂‘÷µ°£";
             this.absToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // trigFunctionsToolStripMenuItem
@@ -438,15 +438,15 @@ namespace LoreSoft.Calculator
             this.atanToolStripMenuItem});
             this.trigFunctionsToolStripMenuItem.Name = "trigFunctionsToolStripMenuItem";
             this.trigFunctionsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
-            this.trigFunctionsToolStripMenuItem.Text = "‰∏âËßíÂáΩÊï∞";
+            this.trigFunctionsToolStripMenuItem.Text = "»˝Ω«∫Ø ˝";
             // 
             // cosToolStripMenuItem
             // 
             this.cosToolStripMenuItem.Name = "cosToolStripMenuItem";
             this.cosToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.cosToolStripMenuItem.Tag = "cos(|)";
-            this.cosToolStripMenuItem.Text = "‰ΩôÂº¶";
-            this.cosToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑ‰ΩôÂº¶ÂÄº„ÄÇ";
+            this.cosToolStripMenuItem.Text = "”‡œ“";
+            this.cosToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒ”‡œ“÷µ°£";
             this.cosToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // coshToolStripMenuItem
@@ -454,8 +454,8 @@ namespace LoreSoft.Calculator
             this.coshToolStripMenuItem.Name = "coshToolStripMenuItem";
             this.coshToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.coshToolStripMenuItem.Tag = "cosh(|)";
-            this.coshToolStripMenuItem.Text = "ÂèåÊõ≤‰ΩôÂº¶";
-            this.coshToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑÂèåÊõ≤‰ΩôÂº¶ÂÄº„ÄÇ";
+            this.coshToolStripMenuItem.Text = "À´«˙”‡œ“";
+            this.coshToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒÀ´«˙”‡œ“÷µ°£";
             this.coshToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // acosToolStripMenuItem
@@ -463,8 +463,8 @@ namespace LoreSoft.Calculator
             this.acosToolStripMenuItem.Name = "acosToolStripMenuItem";
             this.acosToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.acosToolStripMenuItem.Tag = "acos(|)";
-            this.acosToolStripMenuItem.Text = "Âèç‰ΩôÂº¶";
-            this.acosToolStripMenuItem.ToolTipText = "ËøîÂõû‰ΩôÂº¶ÂÄº‰∏∫ÊåáÂÆöÊï∞Â≠óÁöÑËßíÂ∫¶„ÄÇ";
+            this.acosToolStripMenuItem.Text = "∑¥”‡œ“";
+            this.acosToolStripMenuItem.ToolTipText = "∑µªÿ”‡œ“÷µŒ™÷∏∂® ˝◊÷µƒΩ«∂»°£";
             this.acosToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // sinToolStripMenuItem
@@ -472,8 +472,8 @@ namespace LoreSoft.Calculator
             this.sinToolStripMenuItem.Name = "sinToolStripMenuItem";
             this.sinToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.sinToolStripMenuItem.Tag = "sin(|)";
-            this.sinToolStripMenuItem.Text = "Ê≠£Âº¶";
-            this.sinToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑÊ≠£Âº¶ÂÄº„ÄÇ";
+            this.sinToolStripMenuItem.Text = "’˝œ“";
+            this.sinToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒ’˝œ“÷µ°£";
             this.sinToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // sinhToolStripMenuItem
@@ -481,8 +481,8 @@ namespace LoreSoft.Calculator
             this.sinhToolStripMenuItem.Name = "sinhToolStripMenuItem";
             this.sinhToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.sinhToolStripMenuItem.Tag = "sinh(|)";
-            this.sinhToolStripMenuItem.Text = "ÂèåÊõ≤Ê≠£Âº¶";
-            this.sinhToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑÂèåÊõ≤Ê≠£Âº¶ÂÄº„ÄÇ";
+            this.sinhToolStripMenuItem.Text = "À´«˙’˝œ“";
+            this.sinhToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒÀ´«˙’˝œ“÷µ°£";
             this.sinhToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // asinToolStripMenuItem
@@ -490,8 +490,8 @@ namespace LoreSoft.Calculator
             this.asinToolStripMenuItem.Name = "asinToolStripMenuItem";
             this.asinToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.asinToolStripMenuItem.Tag = "asin(|)";
-            this.asinToolStripMenuItem.Text = "ÂèçÊ≠£Âº¶";
-            this.asinToolStripMenuItem.ToolTipText = "ËøîÂõûÊ≠£Âº¶ÂÄº‰∏∫ÊåáÂÆöÊï∞Â≠óÁöÑËßíÂ∫¶„ÄÇ";
+            this.asinToolStripMenuItem.Text = "∑¥’˝œ“";
+            this.asinToolStripMenuItem.ToolTipText = "∑µªÿ’˝œ“÷µŒ™÷∏∂® ˝◊÷µƒΩ«∂»°£";
             this.asinToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // tanToolStripMenuItem
@@ -499,8 +499,8 @@ namespace LoreSoft.Calculator
             this.tanToolStripMenuItem.Name = "tanToolStripMenuItem";
             this.tanToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.tanToolStripMenuItem.Tag = "tan(|)";
-            this.tanToolStripMenuItem.Text = "Ê≠£Âàá";
-            this.tanToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑÊ≠£ÂàáÂÄº„ÄÇ";
+            this.tanToolStripMenuItem.Text = "’˝«–";
+            this.tanToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒ’˝«–÷µ°£";
             this.tanToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // tanhToolStripMenuItem
@@ -508,8 +508,8 @@ namespace LoreSoft.Calculator
             this.tanhToolStripMenuItem.Name = "tanhToolStripMenuItem";
             this.tanhToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.tanhToolStripMenuItem.Tag = "tanh(|)";
-            this.tanhToolStripMenuItem.Text = "ÂèåÊõ≤Ê≠£Âàá";
-            this.tanhToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöËßíÂ∫¶ÁöÑÂèåÊõ≤Ê≠£ÂàáÂÄº„ÄÇ";
+            this.tanhToolStripMenuItem.Text = "À´«˙’˝«–";
+            this.tanhToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂®Ω«∂»µƒÀ´«˙’˝«–÷µ°£";
             this.tanhToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // atanToolStripMenuItem
@@ -517,8 +517,8 @@ namespace LoreSoft.Calculator
             this.atanToolStripMenuItem.Name = "atanToolStripMenuItem";
             this.atanToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.atanToolStripMenuItem.Tag = "atan(|)";
-            this.atanToolStripMenuItem.Text = "ÂèçÊ≠£Âàá";
-            this.atanToolStripMenuItem.ToolTipText = "ËøîÂõûÊ≠£ÂàáÂÄº‰∏∫ÊåáÂÆöÊï∞Â≠óÁöÑËßíÂ∫¶„ÄÇ";
+            this.atanToolStripMenuItem.Text = "∑¥’˝«–";
+            this.atanToolStripMenuItem.ToolTipText = "∑µªÿ’˝«–÷µŒ™÷∏∂® ˝◊÷µƒΩ«∂»°£";
             this.atanToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // logFunctionsToolStripMenuItem
@@ -529,15 +529,15 @@ namespace LoreSoft.Calculator
             this.log10ToolStripMenuItem});
             this.logFunctionsToolStripMenuItem.Name = "logFunctionsToolStripMenuItem";
             this.logFunctionsToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
-            this.logFunctionsToolStripMenuItem.Text = "ÂØπÊï∞ÂáΩÊï∞";
+            this.logFunctionsToolStripMenuItem.Text = "∂‘ ˝∫Ø ˝";
             // 
             // expToolStripMenuItem
             // 
             this.expToolStripMenuItem.Name = "expToolStripMenuItem";
             this.expToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.expToolStripMenuItem.Tag = "exp(|)";
-            this.expToolStripMenuItem.Text = "ÊåáÊï∞";
-            this.expToolStripMenuItem.ToolTipText = "ËøîÂõû e ÁöÑÊåáÂÆöÊ¨°ÂπÇ„ÄÇ";
+            this.expToolStripMenuItem.Text = "÷∏ ˝";
+            this.expToolStripMenuItem.ToolTipText = "∑µªÿ e µƒ÷∏∂®¥Œ√›°£";
             this.expToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // logToolStripMenuItem
@@ -545,8 +545,8 @@ namespace LoreSoft.Calculator
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
             this.logToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.logToolStripMenuItem.Tag = "log(|)";
-            this.logToolStripMenuItem.Text = "ÂØπÊï∞";
-            this.logToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöÊï∞Â≠óÁöÑÂØπÊï∞„ÄÇ";
+            this.logToolStripMenuItem.Text = "∂‘ ˝";
+            this.logToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂® ˝◊÷µƒ∂‘ ˝°£";
             this.logToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // log10ToolStripMenuItem
@@ -554,8 +554,8 @@ namespace LoreSoft.Calculator
             this.log10ToolStripMenuItem.Name = "log10ToolStripMenuItem";
             this.log10ToolStripMenuItem.Size = new System.Drawing.Size(213, 40);
             this.log10ToolStripMenuItem.Tag = "log10(|)";
-            this.log10ToolStripMenuItem.Text = "Â∏∏Áî®ÂØπÊï∞";
-            this.log10ToolStripMenuItem.ToolTipText = "ËøîÂõûÊåáÂÆöÊï∞Â≠óÁöÑ‰ª•10‰∏∫Â∫ïÁöÑÂØπÊï∞„ÄÇ";
+            this.log10ToolStripMenuItem.Text = "≥£”√∂‘ ˝";
+            this.log10ToolStripMenuItem.ToolTipText = "∑µªÿ÷∏∂® ˝◊÷µƒ“‘10Œ™µ◊µƒ∂‘ ˝°£";
             this.log10ToolStripMenuItem.Click += new System.EventHandler(this.function_Click);
             // 
             // conversionsToolStripMenuItem
@@ -568,8 +568,8 @@ namespace LoreSoft.Calculator
             this.timeToolStripMenuItem,
             this.volumeToolStripMenuItem});
             this.conversionsToolStripMenuItem.Name = "conversionsToolStripMenuItem";
-            this.conversionsToolStripMenuItem.Size = new System.Drawing.Size(142, 36);
-            this.conversionsToolStripMenuItem.Text = "Âçï‰ΩçÊç¢ÁÆó(&C)";
+            this.conversionsToolStripMenuItem.Size = new System.Drawing.Size(142, 32);
+            this.conversionsToolStripMenuItem.Text = "µ•ŒªªªÀ„(&C)";
             // 
             // lengthToolStripMenuItem
             // 
@@ -577,7 +577,7 @@ namespace LoreSoft.Calculator
             this.lengthDummyToolStripMenuItem});
             this.lengthToolStripMenuItem.Name = "lengthToolStripMenuItem";
             this.lengthToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.lengthToolStripMenuItem.Text = "ÈïøÂ∫¶(&L)";
+            this.lengthToolStripMenuItem.Text = "≥§∂»(&L)";
             this.lengthToolStripMenuItem.DropDownOpening += new System.EventHandler(this.lengthToolStripMenuItem_DropDownOpening);
             // 
             // lengthDummyToolStripMenuItem
@@ -592,7 +592,7 @@ namespace LoreSoft.Calculator
             this.massDummyToolStripMenuItem});
             this.massToolStripMenuItem.Name = "massToolStripMenuItem";
             this.massToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.massToolStripMenuItem.Text = "Ë¥®Èáè(&M)";
+            this.massToolStripMenuItem.Text = "÷ ¡ø(&M)";
             this.massToolStripMenuItem.DropDownOpening += new System.EventHandler(this.massToolStripMenuItem_DropDownOpening);
             // 
             // massDummyToolStripMenuItem
@@ -607,7 +607,7 @@ namespace LoreSoft.Calculator
             this.speedDummyToolStripMenuItem});
             this.speedToolStripMenuItem.Name = "speedToolStripMenuItem";
             this.speedToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.speedToolStripMenuItem.Text = "ÈÄüÂ∫¶(&S)";
+            this.speedToolStripMenuItem.Text = "ÀŸ∂»(&S)";
             this.speedToolStripMenuItem.DropDownOpening += new System.EventHandler(this.speedToolStripMenuItem_DropDownOpening);
             // 
             // speedDummyToolStripMenuItem
@@ -622,7 +622,7 @@ namespace LoreSoft.Calculator
             this.temperatureDummyToolStripMenuItem});
             this.temperatureToolStripMenuItem.Name = "temperatureToolStripMenuItem";
             this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.temperatureToolStripMenuItem.Text = "Ê∏©Â∫¶(&P)";
+            this.temperatureToolStripMenuItem.Text = "Œ¬∂»(&P)";
             this.temperatureToolStripMenuItem.DropDownOpening += new System.EventHandler(this.temperatureToolStripMenuItem_DropDownOpening);
             // 
             // temperatureDummyToolStripMenuItem
@@ -637,7 +637,7 @@ namespace LoreSoft.Calculator
             this.timeDummyToolStripMenuItem});
             this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
             this.timeToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.timeToolStripMenuItem.Text = "Êó∂Èó¥(&T)";
+            this.timeToolStripMenuItem.Text = " ±º‰(&T)";
             this.timeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.timeToolStripMenuItem_DropDownOpening);
             // 
             // timeDummyToolStripMenuItem
@@ -652,7 +652,7 @@ namespace LoreSoft.Calculator
             this.volumeDummyToolStripMenuItem});
             this.volumeToolStripMenuItem.Name = "volumeToolStripMenuItem";
             this.volumeToolStripMenuItem.Size = new System.Drawing.Size(206, 40);
-            this.volumeToolStripMenuItem.Text = "‰ΩìÁßØ(&V)";
+            this.volumeToolStripMenuItem.Text = "ÃÂª˝(&V)";
             this.volumeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.volumeToolStripMenuItem_DropDownOpening);
             // 
             // volumeDummyToolStripMenuItem
@@ -666,15 +666,15 @@ namespace LoreSoft.Calculator
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
-            this.helpToolStripMenuItem.Text = "Â∏ÆÂä©(&H)";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(102, 32);
+            this.helpToolStripMenuItem.Text = "∞Ô÷˙(&H)";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::LoreSoft.Calculator.Properties.Resources.Help;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(215, 40);
-            this.aboutToolStripMenuItem.Text = "ÂÖ≥‰∫é(&A)...";
+            this.aboutToolStripMenuItem.Text = "πÿ”⁄(&A)...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // mainToolStrip
@@ -692,10 +692,10 @@ namespace LoreSoft.Calculator
             this.clearHistoryToolStripButton,
             this.toolStripSeparator12,
             this.toggleThemeToolStripButton});
-            this.mainToolStrip.Location = new System.Drawing.Point(0, 42);
+            this.mainToolStrip.Location = new System.Drawing.Point(0, 38);
             this.mainToolStrip.Name = "mainToolStrip";
             this.mainToolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.mainToolStrip.Size = new System.Drawing.Size(704, 44);
+            this.mainToolStrip.Size = new System.Drawing.Size(704, 38);
             this.mainToolStrip.TabIndex = 1;
             this.mainToolStrip.Text = "toolStrip1";
             // 
@@ -705,14 +705,14 @@ namespace LoreSoft.Calculator
             this.saveToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Save;
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.saveToolStripButton.Text = "‰øùÂ≠òÂéÜÂè≤ËÆ∞ÂΩï(&S)";
+            this.saveToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.saveToolStripButton.Text = "±£¥Ê¿˙ ∑º«¬º(&S)";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 38);
             // 
             // cutToolStripButton
             // 
@@ -720,8 +720,8 @@ namespace LoreSoft.Calculator
             this.cutToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Cut;
             this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripButton.Name = "cutToolStripButton";
-            this.cutToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.cutToolStripButton.Text = "Ââ™Âàá(&T)";
+            this.cutToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.cutToolStripButton.Text = "ºÙ«–(&T)";
             this.cutToolStripButton.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripButton
@@ -730,8 +730,8 @@ namespace LoreSoft.Calculator
             this.copyToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Copy;
             this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripButton.Name = "copyToolStripButton";
-            this.copyToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.copyToolStripButton.Text = "Â§çÂà∂(&C)";
+            this.copyToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.copyToolStripButton.Text = "∏¥÷∆(&C)";
             this.copyToolStripButton.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripButton
@@ -740,14 +740,14 @@ namespace LoreSoft.Calculator
             this.pasteToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Paste;
             this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripButton.Name = "pasteToolStripButton";
-            this.pasteToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.pasteToolStripButton.Text = "Á≤òË¥¥(&P)";
+            this.pasteToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.pasteToolStripButton.Text = "’≥Ã˘(&P)";
             this.pasteToolStripButton.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
             // 
             // undoToolStripButton
             // 
@@ -755,14 +755,14 @@ namespace LoreSoft.Calculator
             this.undoToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Undo;
             this.undoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.undoToolStripButton.Name = "undoToolStripButton";
-            this.undoToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.undoToolStripButton.Text = "Êí§ÈîÄ(&U)";
+            this.undoToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.undoToolStripButton.Text = "≥∑œ˙(&U)";
             this.undoToolStripButton.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 38);
             // 
             // clearHistoryToolStripButton
             // 
@@ -770,14 +770,14 @@ namespace LoreSoft.Calculator
             this.clearHistoryToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Delete;
             this.clearHistoryToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.clearHistoryToolStripButton.Name = "clearHistoryToolStripButton";
-            this.clearHistoryToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.clearHistoryToolStripButton.Text = "Ê∏ÖÈô§ÂéÜÂè≤ËÆ∞ÂΩï(&C)";
+            this.clearHistoryToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.clearHistoryToolStripButton.Text = "«Â≥˝¿˙ ∑º«¬º(&C)";
             this.clearHistoryToolStripButton.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 38);
             // 
             // toggleThemeToolStripButton
             // 
@@ -786,8 +786,8 @@ namespace LoreSoft.Calculator
             this.toggleThemeToolStripButton.Image = global::LoreSoft.Calculator.Properties.Resources.Link;
             this.toggleThemeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toggleThemeToolStripButton.Name = "toggleThemeToolStripButton";
-            this.toggleThemeToolStripButton.Size = new System.Drawing.Size(40, 38);
-            this.toggleThemeToolStripButton.Text = "ÂàáÊç¢‰∏ªÈ¢ò(&T)";
+            this.toggleThemeToolStripButton.Size = new System.Drawing.Size(40, 32);
+            this.toggleThemeToolStripButton.Text = "«–ªª÷˜Ã‚(&T)";
             this.toggleThemeToolStripButton.Click += new System.EventHandler(this.toggleThemeToolStripButton_Click);
             // 
             // historyPanel
@@ -795,10 +795,10 @@ namespace LoreSoft.Calculator
             this.historyPanel.Controls.Add(this.historyRichTextBox);
             this.historyPanel.Controls.Add(this.historyLabel);
             this.historyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.historyPanel.Location = new System.Drawing.Point(0, 86);
+            this.historyPanel.Location = new System.Drawing.Point(0, 76);
             this.historyPanel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.historyPanel.Name = "historyPanel";
-            this.historyPanel.Size = new System.Drawing.Size(704, 314);
+            this.historyPanel.Size = new System.Drawing.Size(704, 324);
             this.historyPanel.TabIndex = 5;
             // 
             // historyRichTextBox
@@ -812,8 +812,7 @@ namespace LoreSoft.Calculator
             this.historyRichTextBox.Location = new System.Drawing.Point(0, 40);
             this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.historyRichTextBox.Name = "historyRichTextBox";
-            this.historyRichTextBox.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.historyRichTextBox.Size = new System.Drawing.Size(704, 274);
+            this.historyRichTextBox.Size = new System.Drawing.Size(704, 284);
             this.historyRichTextBox.TabIndex = 1;
             this.historyRichTextBox.Text = "";
             this.historyRichTextBox.TextChanged += new System.EventHandler(this.historyRichTextBox_TextChanged);
@@ -834,7 +833,7 @@ namespace LoreSoft.Calculator
             this.clearHistoryContextStripMenuItem.Name = "clearHistoryContextStripMenuItem";
             this.clearHistoryContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.clearHistoryContextStripMenuItem.Size = new System.Drawing.Size(330, 36);
-            this.clearHistoryContextStripMenuItem.Text = "Ê∏ÖÈô§ÂéÜÂè≤ËÆ∞ÂΩï(&C)";
+            this.clearHistoryContextStripMenuItem.Text = "«Â≥˝¿˙ ∑º«¬º(&C)";
             this.clearHistoryContextStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
@@ -849,14 +848,14 @@ namespace LoreSoft.Calculator
             this.copyHistoryContextStripMenuItem2.Name = "copyHistoryContextStripMenuItem2";
             this.copyHistoryContextStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyHistoryContextStripMenuItem2.Size = new System.Drawing.Size(330, 36);
-            this.copyHistoryContextStripMenuItem2.Text = "Â§çÂà∂(&C)";
+            this.copyHistoryContextStripMenuItem2.Text = "∏¥÷∆(&C)";
             this.copyHistoryContextStripMenuItem2.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // historyLabel
             // 
             this.historyLabel.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.historyLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.historyLabel.Font = new System.Drawing.Font("ÂæÆËΩØÈõÖÈªë", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.historyLabel.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.historyLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.historyLabel.Location = new System.Drawing.Point(0, 0);
             this.historyLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -864,14 +863,14 @@ namespace LoreSoft.Calculator
             this.historyLabel.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.historyLabel.Size = new System.Drawing.Size(704, 40);
             this.historyLabel.TabIndex = 0;
-            this.historyLabel.Text = "ÂéÜÂè≤ËÆ∞ÂΩï";
+            this.historyLabel.Text = "¿˙ ∑º«¬º";
             this.historyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // inputLabel
             // 
             this.inputLabel.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.inputLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputLabel.Font = new System.Drawing.Font("ÂæÆËΩØÈõÖÈªë", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.inputLabel.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inputLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.inputLabel.Location = new System.Drawing.Point(0, 400);
             this.inputLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -879,7 +878,7 @@ namespace LoreSoft.Calculator
             this.inputLabel.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.inputLabel.Size = new System.Drawing.Size(704, 40);
             this.inputLabel.TabIndex = 2;
-            this.inputLabel.Text = "ËæìÂÖ•";
+            this.inputLabel.Text = " ‰»Î";
             this.inputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // inputTextBox
@@ -915,7 +914,7 @@ namespace LoreSoft.Calculator
             this.undoContextStripMenuItem.Name = "undoContextStripMenuItem";
             this.undoContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.undoContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
-            this.undoContextStripMenuItem.Text = "Êí§ÈîÄ(&U)";
+            this.undoContextStripMenuItem.Text = "≥∑œ˙(&U)";
             this.undoContextStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
@@ -930,7 +929,7 @@ namespace LoreSoft.Calculator
             this.cutContextStripMenuItem.Name = "cutContextStripMenuItem";
             this.cutContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
-            this.cutContextStripMenuItem.Text = "Ââ™Âàá(&T)";
+            this.cutContextStripMenuItem.Text = "ºÙ«–(&T)";
             this.cutContextStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyContextStripMenuItem
@@ -940,7 +939,7 @@ namespace LoreSoft.Calculator
             this.copyContextStripMenuItem.Name = "copyContextStripMenuItem";
             this.copyContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
-            this.copyContextStripMenuItem.Text = "Â§çÂà∂(&C)";
+            this.copyContextStripMenuItem.Text = "∏¥÷∆(&C)";
             this.copyContextStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteContextStripMenuItem
@@ -950,7 +949,7 @@ namespace LoreSoft.Calculator
             this.pasteContextStripMenuItem.Name = "pasteContextStripMenuItem";
             this.pasteContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
-            this.pasteContextStripMenuItem.Text = "Á≤òË¥¥(&P)";
+            this.pasteContextStripMenuItem.Text = "’≥Ã˘(&P)";
             this.pasteContextStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
@@ -963,7 +962,7 @@ namespace LoreSoft.Calculator
             this.selectAllContextStripMenuItem.Name = "selectAllContextStripMenuItem";
             this.selectAllContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.selectAllContextStripMenuItem.Size = new System.Drawing.Size(246, 36);
-            this.selectAllContextStripMenuItem.Text = "ÂÖ®ÈÄâ(&A)";
+            this.selectAllContextStripMenuItem.Text = "»´—°(&A)";
             this.selectAllContextStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // statusStrip
@@ -985,7 +984,7 @@ namespace LoreSoft.Calculator
             this.answerToolStripStatusLabel.Name = "answerToolStripStatusLabel";
             this.answerToolStripStatusLabel.Size = new System.Drawing.Size(467, 28);
             this.answerToolStripStatusLabel.Spring = true;
-            this.answerToolStripStatusLabel.Text = "Â∞±Áª™";
+            this.answerToolStripStatusLabel.Text = "æÕ–˜";
             this.answerToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.answerToolStripStatusLabel.ToolTipText = "The last answer value.";
             // 
@@ -993,23 +992,23 @@ namespace LoreSoft.Calculator
             // 
             this.timerToolStripStatusLabel.Name = "timerToolStripStatusLabel";
             this.timerToolStripStatusLabel.Size = new System.Drawing.Size(113, 28);
-            this.timerToolStripStatusLabel.Text = "0.000 ÊØ´Áßí";
+            this.timerToolStripStatusLabel.Text = "0.000 ∫¡√Î";
             this.timerToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.timerToolStripStatusLabel.ToolTipText = "‰∏äÊ¨°ËÆ°ÁÆóÊâÄÁî®ÁöÑÊØ´ÁßíÊï∞„ÄÇ";
+            this.timerToolStripStatusLabel.ToolTipText = "…œ¥Œº∆À„À˘”√µƒ∫¡√Î ˝°£";
             // 
             // numLockToolStripStatusLabel
             // 
             this.numLockToolStripStatusLabel.Name = "numLockToolStripStatusLabel";
             this.numLockToolStripStatusLabel.Size = new System.Drawing.Size(96, 28);
-            this.numLockToolStripStatusLabel.Text = "Êï∞Â≠óÈîÅÂÆö";
-            this.numLockToolStripStatusLabel.ToolTipText = "Êï∞Â≠óÈîÅÂÆöÈîÆÁöÑÁä∂ÊÄÅ„ÄÇ";
+            this.numLockToolStripStatusLabel.Text = " ˝◊÷À¯∂®";
+            this.numLockToolStripStatusLabel.ToolTipText = " ˝◊÷À¯∂®º¸µƒ◊¥Ã¨°£";
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "txt";
-            this.saveFileDialog.Filter = "ÊñáÊú¨Êñá‰ª∂ (*.txt)|*.txt|ÊâÄÊúâÊñá‰ª∂ (*.*)|*.*";
+            this.saveFileDialog.Filter = "Œƒ±æŒƒº˛ (*.txt)|*.txt|À˘”–Œƒº˛ (*.*)|*.*";
             this.saveFileDialog.SupportMultiDottedExtensions = true;
-            this.saveFileDialog.Title = "‰øùÂ≠òÂéÜÂè≤ËÆ∞ÂΩï";
+            this.saveFileDialog.Title = "±£¥Ê¿˙ ∑º«¬º";
             // 
             // timer1
             // 
@@ -1030,7 +1029,7 @@ namespace LoreSoft.Calculator
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.MinimumSize = new System.Drawing.Size(713, 542);
             this.Name = "CalculatorForm";
-            this.Text = "ËÆ°ÁÆóÂô®.NET";
+            this.Text = "º∆À„∆˜.NET";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorForm_FormClosing);
             this.Load += new System.EventHandler(this.CalculatorForm_Load);
             this.Shown += new System.EventHandler(this.CalculatorForm_Shown);

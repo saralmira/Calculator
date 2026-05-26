@@ -4,6 +4,7 @@ using LoreSoft.MathExpressions.Metadata;
 using LoreSoft.MathExpressions.UnitConversion;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -13,21 +14,22 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using EvalResult = LoreSoft.MathExpressions.MathEvaluator.EvalResult;
 
 namespace LoreSoft.Calculator
 {
     public partial class CalculatorForm : Form
     {
-        struct HistoryData
+        struct EvaluateData
         {
-            public string Expression;
-            public bool Success;
-            public bool Regular;
+            public EvalResult Result;
+            public string Answer;
+            public int AppendLength;
         }
 
         private const string tabSpace = "\t\t\t";
         private MathEvaluator _eval = new MathEvaluator();
-        private List<HistoryData> _history = new List<HistoryData>();
+        private List<string> _history = new List<string>();
         private int _historyIndex = 0;
         private Stopwatch watch = new Stopwatch();
         private VariablesForm vform = new VariablesForm();
@@ -99,31 +101,13 @@ namespace LoreSoft.Calculator
 
         private void SetInputFromHistory()
         {
-            inputTextBox.Text = _history[_historyIndex].Expression;
+            inputTextBox.Text = _history[_historyIndex];
             inputTextBox.Select(inputTextBox.TextLength, 0);
             inputTextBox.Focus();
         }
 
         private bool Lock() { if (lockTextChange) return false; lockTextChange = true; return true; }
         private void Unlock() { lockTextChange = false; }
-
-        private void AppendData(HistoryData data, string answer)
-        {
-            bool success = data.Success;
-
-            if (!data.Regular)
-            {
-                var variableName = data.Expression.Trim();
-                int id = variableName.IndexOf('=');
-                if (id > -1)
-                    variableName = variableName.Substring(0, id).Trim();
-
-                success = GetVariables().TryGetValue(variableName, out var value);
-                answer = ToString(value);
-            }
-
-            AppendData(data.Expression, success, answer);
-        }
 
         private int AppendData(string expression, bool success, string answer)
         {
@@ -144,47 +128,91 @@ namespace LoreSoft.Calculator
             return historyRichTextBox.Text.Length - oldLength;
         }
 
-        public void EvaluateAll(bool shouldLock = false)
+        private int AppendComment(string comment)
         {
-            if (shouldLock)
+            int oldLength = historyRichTextBox.Text.Length;
+            historyRichTextBox.SelectionColor = Color.Green;
+            historyRichTextBox.SelectionFont = new Font(historyRichTextBox.Font, FontStyle.Italic);
+            historyRichTextBox.AppendText(comment + Environment.NewLine);
+            return historyRichTextBox.Text.Length - oldLength;
+        }
+
+        private EvaluateData Evaluate(string expression, bool append = true, bool ignoreRegular = false, bool addHistory = false)
+        {
+            EvaluateData ret = new EvaluateData()
             {
-                if (!Lock())
-                    return;
+                Result = new EvalResult() { Result = 0, Regular = true },
+                Answer = string.Empty,
+                AppendLength = 0
+            };
+
+            int tab_id = expression.IndexOf('\t');
+            if (tab_id > -1)
+                expression = expression.Substring(0, tab_id);
+
+            var trimExpress = expression.Trim();
+            if (string.IsNullOrEmpty(trimExpress))
+            {
+                if (append)
+                {
+                    int oldLen = historyRichTextBox.Text.Length;
+                    historyRichTextBox.AppendText(Environment.NewLine);
+                    ret.AppendLength = historyRichTextBox.Text.Length - oldLen;
+                }
+
+                return ret;
             }
 
-            historyRichTextBox.SuspendLayout();
-
-            historyRichTextBox.ResetText();
-
-            foreach (HistoryData data in _history)
+            if (expression[0] == ';' || expression[0] == '/')
             {
-                if (data.Regular)
+                if (append)
                 {
-                    string line_ans;
-
-                    try
-                    {
-                        var r = _eval.Evaluate(data.Expression);
-                        line_ans = ToString(r.Result);
-                    }
-                    catch (Exception ex)
-                    {
-                        line_ans = ex.Message;
-                    }
-
-                    AppendData(data, line_ans);
+                    ret.AppendLength = AppendComment(expression);
                 }
-                else
+
+                return ret;
+            }
+
+            // get value from variables
+            if (ignoreRegular)
+            {
+                int id = trimExpress.IndexOf('=');
+                if (id > -1)
                 {
-                    AppendData(data, null);
+                    var variableName = trimExpress.Substring(0, id).Trim();
+                    if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out var variableValue))
+                    {
+                        expression = variableName + " = " + ToString(variableValue);
+                    }
                 }
             }
 
-            historyRichTextBox.ScrollToCaret();
-            historyRichTextBox.ResumeLayout();
+            bool success = true;
 
-            if (shouldLock)
-                Unlock();
+            try
+            {
+                var r = _eval.Evaluate(expression);
+                ret.Answer = ToString(r.Result);
+                ret.Result = r;
+            }
+            catch (Exception ex)
+            {
+                ret.Answer = ex.Message;
+                success = false;
+            }
+
+            if (append)
+            {
+                ret.AppendLength = AppendData(expression, success, ret.Answer);
+            }
+
+            if (addHistory)
+            {
+                _history.Add(expression);
+                _historyIndex = 0;
+            }
+
+            return ret;
         }
 
         public void EvaluateRichTextBox(bool clearVariables = true, bool ignoreRegular = false, bool outputVariables = true)
@@ -222,47 +250,10 @@ namespace LoreSoft.Calculator
                     var line = sr.ReadLine();
                     string expression = line;
 
-                    int tab_id = expression.IndexOf('\t');
-                    if (tab_id > -1)
-                        expression = expression.Substring(0, tab_id);
+                    var eval = Evaluate(expression, true, ignoreRegular, false);
 
-                    if (string.IsNullOrEmpty(expression.Trim()))
-                    {
-                        int oldLen = historyRichTextBox.Text.Length;
-                        historyRichTextBox.AppendText(Environment.NewLine);
-                        if (++row <= currentRow)
-                            row_begin += historyRichTextBox.Text.Length - oldLen;
-                        continue;
-                    }
-
-                    if (ignoreRegular)
-                    {
-                        int eId = expression.IndexOf('=');
-                        if (eId > -1)
-                        {
-                            var variableName = expression.Substring(0, eId).Trim();
-                            if (!string.IsNullOrEmpty(variableName) && GetVariables().TryGetValue(variableName, out var variableValue))
-                                expression = variableName + " = " + ToString(variableValue);
-                        }
-                    }
-
-                    string line_ans;
-                    bool success = true;
-
-                    try
-                    {
-                        var r = _eval.Evaluate(expression);
-                        line_ans = ToString(r.Result);
-                    }
-                    catch (Exception ex)
-                    {
-                        line_ans = ex.Message;
-                        success = false;
-                    }
-
-                    int append_len = AppendData(expression, success, line_ans);
                     if (++row <= currentRow)
-                        row_begin += append_len;
+                        row_begin += eval.AppendLength;
                 }
 
                 watch.Stop();
@@ -285,36 +276,15 @@ namespace LoreSoft.Calculator
             if (!Lock())
                 return;
 
-            string answer;
-            bool hasError = false;
-            bool regular = true;
+            historyRichTextBox.SuspendLayout();
 
             watch.Reset();
             watch.Start();
-            try
-            {
-                vform.InputVariable(GetVariables());
-                var r = _eval.Evaluate(input);
-                answer = ToString(r.Result);
-                regular = r.Regular;
-                vform.OutputVariable(GetVariables(), true);
-            }
-            catch (Exception ex)
-            {
-                answer = ex.Message;
-                hasError = true;
-            }
+
+            Evaluate(input, true, false, true);
+
             watch.Stop();
             timerToolStripStatusLabel.Text = watch.Elapsed.TotalMilliseconds + " ºÁÃë";
-
-            // EvaluateAll();
-
-            _history.Add(new HistoryData { Expression = input, Success = !hasError, Regular = regular });
-            _historyIndex = 0;
-
-            historyRichTextBox.SuspendLayout();
-
-            AppendData(_history[_history.Count - 1], answer);
 
             historyRichTextBox.ScrollToCaret();
             historyRichTextBox.ResumeLayout();
