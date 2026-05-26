@@ -1,4 +1,4 @@
-﻿namespace LoreSoft.MathExpressions
+namespace LoreSoft.MathExpressions
 {
     /// <summary>
     /// The interface used when running expressions

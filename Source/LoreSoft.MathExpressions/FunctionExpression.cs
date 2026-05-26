@@ -67,11 +67,11 @@ namespace LoreSoft.MathExpressions
         {
             base.Validate(numbers);
 
-            Type[] desiredMethodSignatureArgs = {typeof (decimal) };
+            Type[] desiredMethodSignatureArgs = { typeof(double) };
 
             if (IsTwoArgumentFunction(_function))
             {
-                desiredMethodSignatureArgs = new []{typeof (decimal), typeof (decimal) };
+                desiredMethodSignatureArgs = new[] { typeof(double), typeof(double) };
             }
 
             string function = char.ToUpperInvariant(_function[0]) + _function.Substring(1);
@@ -83,13 +83,18 @@ namespace LoreSoft.MathExpressions
                 null);
 
             if (method == null)
+            {
                 throw new InvalidOperationException(
-                    string.Format(CultureInfo.CurrentCulture, 
+                    string.Format(CultureInfo.CurrentCulture,
                         Resources.InvalidFunctionName, _function));
+            }
 
             object[] parameters = new object[numbers.Length];
-            Array.Copy(numbers, parameters, numbers.Length);
-            return (decimal) method.Invoke(null, parameters);
+            for (int i = 0; i < numbers.Length; ++i)
+                parameters[i] = (double)numbers[i];
+
+            // Array.Copy(numbers, parameters, numbers.Length);
+            return (decimal)(double)method.Invoke(null, parameters);
         }
 
         /// <summary>Gets the number of arguments this expression uses.</summary>
