@@ -223,10 +223,13 @@ namespace LoreSoft.MathExpressions
                     continue;
                 }
 
-                isNumOrV = false;
-
-                if (TryStartGroup())
+                if (TryStartGroup(isNumOrV))
+                {
+                    isNumOrV = false;
                     continue;
+                }
+
+                isNumOrV = false;
 
                 if (TryComma())
                     continue;
@@ -343,7 +346,7 @@ namespace LoreSoft.MathExpressions
             throw new ParseException(Resources.InvalidVariableEncountered + _buffer);
         }
 
-        private bool TryStartGroup()
+        private bool TryStartGroup(bool isNumOrV)
         {
             if (_currentChar != '(')
                 return false;
@@ -352,6 +355,9 @@ namespace LoreSoft.MathExpressions
             {
                 throw new ParseException(Resources.InvalidCharacterEncountered + ",");
             }
+
+            if (isNumOrV)
+                _symbolStack.Push("*");
 
             _symbolStack.Push(_currentChar.ToString());
             _nestedGroupDepth++;

@@ -809,6 +809,7 @@ namespace LoreSoft.Calculator
             this.historyRichTextBox.DetectUrls = false;
             this.historyRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.historyRichTextBox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.historyRichTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.historyRichTextBox.Location = new System.Drawing.Point(0, 40);
             this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.historyRichTextBox.Name = "historyRichTextBox";
