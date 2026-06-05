@@ -34,7 +34,7 @@ namespace LoreSoft.Calculator
         private Stopwatch watch = new Stopwatch();
         private VariablesForm vform = new VariablesForm();
         private bool lockTextChange = false;
-        private bool lockClearVariables = false;
+        private bool lockClearVariables = true;
 
         public CalculatorForm()
         {
@@ -229,7 +229,7 @@ namespace LoreSoft.Calculator
 
             if (currentSel > 0)
             {
-                var frontStr = currentText.Substring(0, currentSel);
+                var frontStr = currentSel >= currentText.Length ? currentText : currentText.Substring(0, currentSel);
                 currentRow = frontStr.Count((c) => { return c == '\n'; });
                 currentIndent = Math.Max(0, currentSel - (frontStr.LastIndexOf('\n') + 1));
             }
@@ -364,6 +364,7 @@ namespace LoreSoft.Calculator
         public void InitVariables()
         {
             _eval.InitVariables();
+            vform.OutputVariable(GetVariables(), false);
         }
 
         private void inputTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -427,6 +428,7 @@ namespace LoreSoft.Calculator
 
         private void clearHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lockClearVariables = false;
             historyRichTextBox.ResetText();
         }
 
@@ -633,7 +635,7 @@ namespace LoreSoft.Calculator
         {
             timer1.Stop();
             EvaluateRichTextBox(!lockClearVariables);
-            lockClearVariables = false;
+            lockClearVariables = true;
         }
 
         private void toggleThemeToolStripButton_Click(object sender, EventArgs e)
