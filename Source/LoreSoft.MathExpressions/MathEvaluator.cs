@@ -1,11 +1,12 @@
+using LoreSoft.MathExpressions.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Text;
-using LoreSoft.MathExpressions.Properties;
+using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace LoreSoft.MathExpressions
 {
@@ -511,26 +512,37 @@ namespace LoreSoft.MathExpressions
                 _buffer.Append(_currentChar);
                 p = (char)_expressionReader.Peek();
                 hexNumber = true;
+
+                while (char.IsNumber(p)
+                   || p >= 'a' && p <= 'f'
+                   || p >= 'A' && p <= 'F')
+                {
+                    _currentChar = (char)_expressionReader.Read();
+                    _buffer.Append(_currentChar);
+                    p = (char)_expressionReader.Peek();
+                }
             }
-
-            bool hasNote = false;
-            bool isNote = false;
-            bool lastIsNote = false;
-
-            while (NumberExpression.IsNumber(p)
-                || ((isNote = p == 'E' || p == 'e') && !hasNote)
-                || (lastIsNote && (p == '-' || p == '+')))
+            else
             {
-                if (isNote)
-                    hasNote = true;
-                lastIsNote = isNote;
-                isNote = false;
+                bool hasNote = false;
+                bool isNote = false;
+                bool lastIsNote = false;
 
-                _currentChar = (char)_expressionReader.Read();
-                _buffer.Append(_currentChar);
-                p = (char)_expressionReader.Peek();
+                while (NumberExpression.IsNumber(p)
+                    || ((isNote = p == 'E' || p == 'e') && !hasNote)
+                    || (lastIsNote && (p == '-' || p == '+')))
+                {
+                    if (isNote)
+                        hasNote = true;
+                    lastIsNote = isNote;
+                    isNote = false;
+
+                    _currentChar = (char)_expressionReader.Read();
+                    _buffer.Append(_currentChar);
+                    p = (char)_expressionReader.Peek();
+                }
             }
-
+            
             if (!decimal.TryParse(_buffer.ToString(), out var value))
             {
                 if (hexNumber)
