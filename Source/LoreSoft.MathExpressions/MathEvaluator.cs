@@ -47,6 +47,7 @@ namespace LoreSoft.MathExpressions
         private VariableDictionary _variables;
         private ReadOnlyCollection<string> _functions;        
         private char _currentChar;
+        private bool _isHex;
 
 
         /// <summary>
@@ -66,6 +67,7 @@ namespace LoreSoft.MathExpressions
             _parameters = new Stack<decimal>(2);
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
+            _isHex = false;
         }
 
 
@@ -107,6 +109,8 @@ namespace LoreSoft.MathExpressions
             /// 是否为常规表达式（非变量赋值）。
             /// </summary>
             public bool Regular;
+
+            public bool IsHex;
         }
 
         public void InitVariables()
@@ -144,6 +148,7 @@ namespace LoreSoft.MathExpressions
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
             _expressionQueue.Clear();
+            _isHex = false;
 
             ParseExpressionToQueue();
 
@@ -154,7 +159,7 @@ namespace LoreSoft.MathExpressions
             if (!string.IsNullOrEmpty(new_variable_name))
                 _variables[new_variable_name] = result;
 
-            return new EvalResult { Result = result, Regular = regular };
+            return new EvalResult { Result = result, Regular = regular, IsHex = _isHex };
         }
 
         /// <summary>Registers a function for the <see cref="MathEvaluator"/>.</summary>
@@ -357,7 +362,13 @@ namespace LoreSoft.MathExpressions
             }
 
             if (isNumOrV)
-                _symbolStack.Push("*");
+            {
+                if (_symbolStack.Count == 0
+                    || !IsFunction(_symbolStack.Peek()))
+                {
+                    _symbolStack.Push("*");
+                }
+            }
 
             _symbolStack.Push(_currentChar.ToString());
             _nestedGroupDepth++;
@@ -492,6 +503,16 @@ namespace LoreSoft.MathExpressions
             _buffer.Length = 0;
             _buffer.Append(_currentChar);
 
+            bool hexNumber = false;
+            if (_currentChar == '0' && (p == 'x' || p == 'X'))
+            {
+                // hex mode
+                _currentChar = (char)_expressionReader.Read();
+                _buffer.Append(_currentChar);
+                p = (char)_expressionReader.Peek();
+                hexNumber = true;
+            }
+
             bool hasNote = false;
             bool isNote = false;
             bool lastIsNote = false;
@@ -512,10 +533,12 @@ namespace LoreSoft.MathExpressions
 
             if (!decimal.TryParse(_buffer.ToString(), out var value))
             {
-                if (!double.TryParse(_buffer.ToString(), out var value2))
+                if (hexNumber)
+                    value = Convert.ToInt64(_buffer.ToString(), 16);
+                else if (double.TryParse(_buffer.ToString(), out var value2))
+                    value = (decimal)value2;
+                else
                     throw new ParseException(Resources.InvalidNumberFormat + _buffer);
-
-                value = (decimal)value2;
             }
 
             NumberExpression expression = new NumberExpression(value);
@@ -560,6 +583,9 @@ namespace LoreSoft.MathExpressions
             }
             else
                 throw new ParseException(Resources.InvalidSymbolOnStack + p);
+
+            if (e is FunctionExpression func && func.IsHex)
+                _isHex = true;
 
             return e;
         }

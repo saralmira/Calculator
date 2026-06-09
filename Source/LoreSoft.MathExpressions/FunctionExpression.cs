@@ -12,6 +12,64 @@ namespace LoreSoft.MathExpressions
     /// </summary>
     public class FunctionExpression : ExpressionBase
     {
+        class FunctionDefinition
+        {
+            public string Name;
+            public int ArgumentCount;
+
+            public virtual decimal Execute(decimal[] numbers)
+            {
+                Type[] desiredMethodSignatureArgs;
+
+                switch (ArgumentCount)
+                {
+                    case 1:
+                        desiredMethodSignatureArgs = new[] { typeof(double) };
+                        break;
+                    case 2:
+                        desiredMethodSignatureArgs = new[] { typeof(double), typeof(double) };
+                        break;
+                    default:
+                        desiredMethodSignatureArgs = new[] { typeof(void) };
+                        break;
+                }
+
+                string function = char.ToUpperInvariant(Name[0]) + Name.Substring(1);
+                MethodInfo method = typeof(Math).GetMethod(
+                    function,
+                    BindingFlags.Static | BindingFlags.Public,
+                    null,
+                    desiredMethodSignatureArgs,
+                    null);
+
+                if (method == null)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(CultureInfo.CurrentCulture,
+                            Resources.InvalidFunctionName, Name));
+                }
+
+                object[] parameters = new object[numbers.Length];
+                for (int i = 0; i < numbers.Length; ++i)
+                    parameters[i] = (double)numbers[i];
+
+                // Array.Copy(numbers, parameters, numbers.Length);
+                return (decimal)(double)method.Invoke(null, parameters);
+            }
+       
+            public virtual bool IsHex() { return false; }
+        }
+
+        class HexFunctionDefinition : FunctionDefinition
+        {
+            public override decimal Execute(decimal[] numbers)
+            {
+                return numbers[0];
+            }
+
+            public override bool IsHex() { return true; }
+        }
+
         // must be sorted
         /// <summary>The supported single argument math functions by this class.</summary>
         private static readonly string[] oneArgumentMathFunctions = new string[]
@@ -26,6 +84,8 @@ namespace LoreSoft.MathExpressions
             {
                 "max", "min", "pow", "round"
             };
+
+        private static readonly Dictionary<string, FunctionDefinition> FunctionArray = new Dictionary<string, FunctionDefinition>();
 
         /// <summary>Initializes a new instance of the <see cref="FunctionExpression"/> class.</summary>
         /// <param name="function">The function name for this instance.</param>
@@ -46,6 +106,7 @@ namespace LoreSoft.MathExpressions
                     "function");
 
             _function = function;
+            _isHex = FunctionArray[_function].IsHex();
             base.Evaluate = new MathEvaluate(Execute);
         }
 
@@ -58,6 +119,9 @@ namespace LoreSoft.MathExpressions
             get { return _function; }
         }
 
+        private bool _isHex;
+        public bool IsHex { get { return _isHex; } }
+
         /// <summary>Executes the function on specified numbers.</summary>
         /// <param name="numbers">The numbers used in the function.</param>
         /// <returns>The result of the function execution.</returns>
@@ -67,34 +131,16 @@ namespace LoreSoft.MathExpressions
         {
             base.Validate(numbers);
 
-            Type[] desiredMethodSignatureArgs = { typeof(double) };
-
-            if (IsTwoArgumentFunction(_function))
+            if (FunctionArray.TryGetValue(_function, out var function))
             {
-                desiredMethodSignatureArgs = new[] { typeof(double), typeof(double) };
+                return function.Execute(numbers);
             }
-
-            string function = char.ToUpperInvariant(_function[0]) + _function.Substring(1);
-            MethodInfo method = typeof (Math).GetMethod(
-                function, 
-                BindingFlags.Static | BindingFlags.Public,
-                null,
-                desiredMethodSignatureArgs,
-                null);
-
-            if (method == null)
+            else
             {
                 throw new InvalidOperationException(
                     string.Format(CultureInfo.CurrentCulture,
                         Resources.InvalidFunctionName, _function));
             }
-
-            object[] parameters = new object[numbers.Length];
-            for (int i = 0; i < numbers.Length; ++i)
-                parameters[i] = (double)numbers[i];
-
-            // Array.Copy(numbers, parameters, numbers.Length);
-            return (decimal)(double)method.Invoke(null, parameters);
         }
 
         /// <summary>Gets the number of arguments this expression uses.</summary>
@@ -103,14 +149,7 @@ namespace LoreSoft.MathExpressions
         {
             get
             {
-                int rval = 1;
-
-                if (IsTwoArgumentFunction(_function))
-                {
-                    rval = 2;
-                }
-
-                return rval;
+                return FunctionArray[_function].ArgumentCount;
             }
         }
 
@@ -119,23 +158,7 @@ namespace LoreSoft.MathExpressions
         /// <returns><c>true</c> if the specified name is a function; otherwise, <c>false</c>.</returns>
         public static bool IsFunction(string function)
         {
-            return IsOneArgumentFunction(function) || IsTwoArgumentFunction(function);
-        }
-
-        private static bool IsTwoArgumentFunction(string function)
-        {
-            bool isTwoArgumentFunction = Array.BinarySearch(
-                twoArgumentMathFunctions, function,
-                StringComparer.OrdinalIgnoreCase) >= 0;
-            return isTwoArgumentFunction;
-        }
-
-        private static bool IsOneArgumentFunction(string function)
-        {
-            bool isOneArgumentFunction = Array.BinarySearch(
-                oneArgumentMathFunctions, function,
-                StringComparer.OrdinalIgnoreCase) >= 0;
-            return isOneArgumentFunction;
+            return FunctionArray.ContainsKey(function);
         }
 
         /// <summary>Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.</summary>
@@ -152,7 +175,12 @@ namespace LoreSoft.MathExpressions
         /// <returns>An array of function names.</returns>
         public static string[] GetFunctionNames()
         {
-            return oneArgumentMathFunctions.Concat(twoArgumentMathFunctions).ToArray();
+            foreach (var arg in oneArgumentMathFunctions)
+                FunctionArray[arg] = new FunctionDefinition { ArgumentCount = 1, Name = arg };
+            foreach (var arg in twoArgumentMathFunctions)
+                FunctionArray[arg] = new FunctionDefinition { ArgumentCount = 2, Name = arg };
+            FunctionArray["hex"] = new HexFunctionDefinition { ArgumentCount = 1, Name = "hex" };
+            return FunctionArray.Keys.ToArray();
         }
     }
 }

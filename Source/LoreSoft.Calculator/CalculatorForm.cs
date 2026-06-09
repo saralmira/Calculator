@@ -192,7 +192,7 @@ namespace LoreSoft.Calculator
             try
             {
                 var r = _eval.Evaluate(expression);
-                ret.Answer = ToString(r.Result);
+                ret.Answer = ToString(r.Result, r.IsHex);
                 ret.Result = r;
             }
             catch (Exception ex)
@@ -650,9 +650,20 @@ namespace LoreSoft.Calculator
             this.Focus();
         }
 
-        private static string ToString(decimal value)
+        private static string ToString(decimal value, bool toHex = false)
         {
-            return decimal.Round(value, 15).ToString();
+            value = decimal.Round(value, 15);
+
+            if (toHex)
+            {
+                try
+                {
+                    return Convert.ToInt64(value).ToString("X");
+                }
+                catch { }
+            }
+
+            return value.ToString();
         }
     }
 }
