@@ -48,7 +48,7 @@ namespace LoreSoft.MathExpressions
         private VariableDictionary _variables;
         private ReadOnlyCollection<string> _functions;        
         private char _currentChar;
-        private bool _isHex;
+        private EvalFlag _evalFlag;
 
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace LoreSoft.MathExpressions
             _parameters = new Stack<decimal>(2);
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
-            _isHex = false;
+            _evalFlag = EvalFlag.None;
         }
 
 
@@ -97,6 +97,13 @@ namespace LoreSoft.MathExpressions
             get { return _variables[AnswerVariable]; }
         }
 
+        public enum EvalFlag
+        {
+            None,
+            Hex,
+            Hex64
+        }
+
         /// <summary>
         /// 表示表达式求值结果的结构体。
         /// </summary>
@@ -111,7 +118,7 @@ namespace LoreSoft.MathExpressions
             /// </summary>
             public bool Regular;
 
-            public bool IsHex;
+            public EvalFlag Flag;
         }
 
         public void InitVariables()
@@ -149,7 +156,7 @@ namespace LoreSoft.MathExpressions
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
             _expressionQueue.Clear();
-            _isHex = false;
+            _evalFlag = EvalFlag.None;
 
             ParseExpressionToQueue();
 
@@ -160,7 +167,7 @@ namespace LoreSoft.MathExpressions
             if (!string.IsNullOrEmpty(new_variable_name))
                 _variables[new_variable_name] = result;
 
-            return new EvalResult { Result = result, Regular = regular, IsHex = _isHex };
+            return new EvalResult { Result = result, Regular = regular, Flag = _evalFlag };
         }
 
         /// <summary>Registers a function for the <see cref="MathEvaluator"/>.</summary>
@@ -596,8 +603,8 @@ namespace LoreSoft.MathExpressions
             else
                 throw new ParseException(Resources.InvalidSymbolOnStack + p);
 
-            if (e is FunctionExpression func && func.IsHex)
-                _isHex = true;
+            if (e is FunctionExpression func && func.Flag != EvalFlag.None)
+                _evalFlag = func.Flag;
 
             return e;
         }

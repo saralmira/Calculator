@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using EvalResult = LoreSoft.MathExpressions.MathEvaluator.EvalResult;
+using EvalFlag = LoreSoft.MathExpressions.MathEvaluator.EvalFlag;
 
 namespace LoreSoft.Calculator
 {
@@ -192,7 +193,7 @@ namespace LoreSoft.Calculator
             try
             {
                 var r = _eval.Evaluate(expression);
-                ret.Answer = ToString(r.Result, r.IsHex);
+                ret.Answer = ToString(r.Result, r.Flag);
                 ret.Result = r;
             }
             catch (Exception ex)
@@ -650,17 +651,22 @@ namespace LoreSoft.Calculator
             this.Focus();
         }
 
-        private static string ToString(decimal value, bool toHex = false)
+        private static string ToString(decimal value, EvalFlag flag = EvalFlag.None)
         {
             value = decimal.Round(value, 15);
 
-            if (toHex)
+            switch (flag)
             {
-                try
-                {
-                    return Convert.ToInt64(value).ToString("X");
-                }
-                catch { }
+                case EvalFlag.Hex:
+                    try
+                    { return Convert.ToInt32(value).ToString("X"); }
+                    catch { }
+                    break;
+                case EvalFlag.Hex64:
+                    try
+                    { return Convert.ToInt64(value).ToString("X"); }
+                    catch { }
+                    break;
             }
 
             return value.ToString();

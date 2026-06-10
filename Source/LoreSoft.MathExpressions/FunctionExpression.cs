@@ -1,9 +1,10 @@
+using LoreSoft.MathExpressions.Properties;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using LoreSoft.MathExpressions.Properties;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using static LoreSoft.MathExpressions.MathEvaluator;
 
 namespace LoreSoft.MathExpressions
 {
@@ -57,18 +58,17 @@ namespace LoreSoft.MathExpressions
                 return (decimal)(double)method.Invoke(null, parameters);
             }
        
-            public virtual bool IsHex() { return false; }
+            public virtual EvalFlag GetFlag() { return EvalFlag.None; }
         }
 
         class HexFunctionDefinition : FunctionDefinition
         {
-            public override decimal Execute(decimal[] numbers)
-            {
-                return numbers[0];
-            }
+            public override decimal Execute(decimal[] numbers) { return numbers[0]; }
 
-            public override bool IsHex() { return true; }
+            public override EvalFlag GetFlag() { return EvalFlag.Hex; }
         }
+
+        class Hex64FunctionDefinition : HexFunctionDefinition { public override EvalFlag GetFlag() { return EvalFlag.Hex64; } }
 
         // must be sorted
         /// <summary>The supported single argument math functions by this class.</summary>
@@ -106,7 +106,7 @@ namespace LoreSoft.MathExpressions
                     "function");
 
             _function = function;
-            _isHex = FunctionArray[_function].IsHex();
+            _flag = FunctionArray[_function].GetFlag();
             base.Evaluate = new MathEvaluate(Execute);
         }
 
@@ -119,8 +119,8 @@ namespace LoreSoft.MathExpressions
             get { return _function; }
         }
 
-        private bool _isHex;
-        public bool IsHex { get { return _isHex; } }
+        private EvalFlag _flag;
+        public EvalFlag Flag { get { return _flag; } }
 
         /// <summary>Executes the function on specified numbers.</summary>
         /// <param name="numbers">The numbers used in the function.</param>
@@ -180,6 +180,7 @@ namespace LoreSoft.MathExpressions
             foreach (var arg in twoArgumentMathFunctions)
                 FunctionArray[arg] = new FunctionDefinition { ArgumentCount = 2, Name = arg };
             FunctionArray["hex"] = new HexFunctionDefinition { ArgumentCount = 1, Name = "hex" };
+            FunctionArray["hex64"] = new Hex64FunctionDefinition { ArgumentCount = 1, Name = "hex64" };
             return FunctionArray.Keys.ToArray();
         }
     }
