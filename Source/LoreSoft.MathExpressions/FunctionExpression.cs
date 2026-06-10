@@ -69,6 +69,8 @@ namespace LoreSoft.MathExpressions
         }
 
         class Hex64FunctionDefinition : HexFunctionDefinition { public override EvalFlag GetFlag() { return EvalFlag.Hex64; } }
+        class HexFloatFunctionDefinition : HexFunctionDefinition { public override EvalFlag GetFlag() { return EvalFlag.HexFloat; } }
+        class HexDoubleFunctionDefinition : HexFunctionDefinition { public override EvalFlag GetFlag() { return EvalFlag.HexDouble; } }
 
         // must be sorted
         /// <summary>The supported single argument math functions by this class.</summary>
@@ -181,6 +183,8 @@ namespace LoreSoft.MathExpressions
                 FunctionArray[arg] = new FunctionDefinition { ArgumentCount = 2, Name = arg };
             FunctionArray["hex"] = new HexFunctionDefinition { ArgumentCount = 1, Name = "hex" };
             FunctionArray["hex64"] = new Hex64FunctionDefinition { ArgumentCount = 1, Name = "hex64" };
+            FunctionArray["hexf"] = new HexFloatFunctionDefinition { ArgumentCount = 1, Name = "hexf" };
+            FunctionArray["hexd"] = new HexDoubleFunctionDefinition { ArgumentCount = 1, Name = "hexd" };
             return FunctionArray.Keys.ToArray();
         }
     }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace LoreSoft.MathExpressions
@@ -101,7 +102,9 @@ namespace LoreSoft.MathExpressions
         {
             None,
             Hex,
-            Hex64
+            Hex64,
+            HexFloat,
+            HexDouble
         }
 
         /// <summary>
@@ -512,6 +515,8 @@ namespace LoreSoft.MathExpressions
             _buffer.Append(_currentChar);
 
             bool hexNumber = false;
+            bool hexFloat = false;
+            bool hexUnsigned = false;
             if (_currentChar == '0' && (p == 'x' || p == 'X'))
             {
                 // hex mode
@@ -527,6 +532,25 @@ namespace LoreSoft.MathExpressions
                     _currentChar = (char)_expressionReader.Read();
                     _buffer.Append(_currentChar);
                     p = (char)_expressionReader.Peek();
+                }
+
+                if (p == ':')
+                {
+                    _expressionReader.Read();
+                    _currentChar = (char)_expressionReader.Read();
+                    p = (char)_expressionReader.Peek();
+
+                    switch (_currentChar)
+                    {
+                        case 'f':
+                        case 'F':
+                            hexFloat = true;
+                            break;
+                        case 'u':
+                        case 'U':
+                            hexUnsigned = true;
+                            break;
+                    }
                 }
             }
             else
@@ -553,7 +577,20 @@ namespace LoreSoft.MathExpressions
             if (!decimal.TryParse(_buffer.ToString(), out var value))
             {
                 if (hexNumber)
-                    value = Convert.ToInt64(_buffer.ToString(), 16);
+                {
+                    if (hexFloat && _buffer.Length > 2)
+                    {
+                        value = Util.ParseFloatHexString(_buffer.ToString().Substring(2));
+                    }
+                    else if (hexUnsigned)
+                    {
+                        value = Convert.ToUInt64(_buffer.ToString(), 16);
+                    }
+                    else
+                    {
+                        value = Convert.ToInt64(_buffer.ToString(), 16);
+                    }
+                }
                 else if (double.TryParse(_buffer.ToString(), out var value2))
                     value = (decimal)value2;
                 else
