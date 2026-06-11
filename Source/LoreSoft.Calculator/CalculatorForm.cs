@@ -658,11 +658,23 @@ namespace LoreSoft.Calculator
             switch (flag)
             {
                 case EvalFlag.Hex:
-                    try { return Convert.ToInt32(value).ToString("X"); }
+                    try 
+                    {
+                        var tmp = Convert.ToInt32(value);
+                        if (tmp != value)
+                            return Util.ConvertToHexString((float)value);
+                        return tmp.ToString("X"); 
+                    }
                     catch { }
                     break;
                 case EvalFlag.Hex64:
-                    try { return Convert.ToInt64(value).ToString("X"); }
+                    try 
+                    {
+                        var tmp = Convert.ToInt64(value);
+                        if (tmp != value)
+                            return Util.ConvertToHexString((double)value);
+                        return tmp.ToString("X"); 
+                    }
                     catch { }
                     break;
                 case EvalFlag.HexFloat:
