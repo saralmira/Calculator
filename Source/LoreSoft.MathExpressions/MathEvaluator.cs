@@ -559,6 +559,12 @@ namespace LoreSoft.MathExpressions
                 bool isNote = false;
                 bool lastIsNote = false;
 
+                if (p == ',')
+                {
+                    _expressionReader.Read();
+                    p = (char)_expressionReader.Peek();
+                }
+
                 while (NumberExpression.IsNumber(p)
                     || ((isNote = p == 'E' || p == 'e') && !hasNote)
                     || (lastIsNote && (p == '-' || p == '+')))
@@ -571,6 +577,12 @@ namespace LoreSoft.MathExpressions
                     _currentChar = (char)_expressionReader.Read();
                     _buffer.Append(_currentChar);
                     p = (char)_expressionReader.Peek();
+
+                    if (p == ',')
+                    {
+                        _expressionReader.Read();
+                        p = (char)_expressionReader.Peek();
+                    }
                 }
             }
             
