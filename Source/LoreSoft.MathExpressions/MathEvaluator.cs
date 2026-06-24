@@ -117,6 +117,7 @@ namespace LoreSoft.MathExpressions
             int id = expression.IndexOf('=');
             string new_variable_name = null;
             bool regular = true;
+            _expressionReader = new ExpressionHelper(data.Expression);
 
             if (id > -1)
             {
@@ -126,10 +127,9 @@ namespace LoreSoft.MathExpressions
                 //if (!_variables.ContainsKey(variable_name))
                 new_variable_name = variable_name;
 
-                expression = expression.Substring(id + 1).Trim();
+                _expressionReader.Position = id + 1;
             }
 
-            _expressionReader = new ExpressionHelper(data.Expression);
             _symbolStack.Clear();
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;

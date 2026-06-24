@@ -95,7 +95,7 @@ namespace LoreSoft.MathExpressions
             _s[_pos - 1] = newChar;
         }
 
-        public int Position { get { return _pos; } }
+        public int Position { get { return _pos; } set { _pos = value; } }
         public int Length { get { return _length; } }
         public string String { get { return _s.ToString(); } }
     }
