@@ -14,8 +14,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using EvalResult = LoreSoft.MathExpressions.MathEvaluator.EvalResult;
-using EvalFlag = LoreSoft.MathExpressions.MathEvaluator.EvalFlag;
 
 namespace LoreSoft.Calculator
 {
@@ -23,7 +21,7 @@ namespace LoreSoft.Calculator
     {
         struct EvaluateData
         {
-            public EvalResult Result;
+            public ExpressionData Result;
             public string Answer;
             public int AppendLength;
         }
@@ -140,9 +138,11 @@ namespace LoreSoft.Calculator
 
         private EvaluateData Evaluate(string expression, bool append = true, bool ignoreRegular = false, bool addHistory = false)
         {
+            var data = new ExpressionData(expression);
+
             EvaluateData ret = new EvaluateData()
             {
-                Result = new EvalResult() { Result = 0, Regular = true },
+                Result = data,
                 Answer = string.Empty,
                 AppendLength = 0
             };
@@ -189,12 +189,12 @@ namespace LoreSoft.Calculator
             }
 
             bool success = true;
+            data.String = expression;
 
             try
             {
-                var r = _eval.Evaluate(expression);
-                ret.Answer = ToString(r.Result, r.Flag);
-                ret.Result = r;
+                _eval.Evaluate(data);
+                ret.Answer = ToString(data.Result, data.Flag);
             }
             catch (Exception ex)
             {
@@ -204,7 +204,7 @@ namespace LoreSoft.Calculator
 
             if (append)
             {
-                ret.AppendLength = AppendData(expression, success, ret.Answer);
+                ret.AppendLength = AppendData(data.String, success, ret.Answer);
             }
 
             if (addHistory)

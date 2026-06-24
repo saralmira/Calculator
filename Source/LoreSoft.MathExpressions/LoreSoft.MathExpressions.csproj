@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="ConvertExpression.cs" />
     <Compile Include="ExpressionBase.cs" />
+    <Compile Include="ExpressionHelper.cs" />
     <Compile Include="FunctionExpression.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IExpression.cs" />

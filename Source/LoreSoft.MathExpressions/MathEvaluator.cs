@@ -45,7 +45,7 @@ namespace LoreSoft.MathExpressions
         private List<string> _innerFunctions;
         private uint _nestedFunctionDepth;
         private uint _nestedGroupDepth;
-        private StringReader _expressionReader;
+        private ExpressionHelper _expressionReader;
         private VariableDictionary _variables;
         private ReadOnlyCollection<string> _functions;        
         private char _currentChar;
@@ -98,32 +98,6 @@ namespace LoreSoft.MathExpressions
             get { return _variables[AnswerVariable]; }
         }
 
-        public enum EvalFlag
-        {
-            None,
-            Hex,
-            Hex64,
-            HexFloat,
-            HexDouble
-        }
-
-        /// <summary>
-        /// 表示表达式求值结果的结构体。
-        /// </summary>
-        public struct EvalResult
-        {
-            /// <summary>
-            /// 求值结果。
-            /// </summary>
-            public decimal Result;
-            /// <summary>
-            /// 是否为常规表达式（非变量赋值）。
-            /// </summary>
-            public bool Regular;
-
-            public EvalFlag Flag;
-        }
-
         public void InitVariables()
         {
             _variables = new VariableDictionary(this);
@@ -134,8 +108,9 @@ namespace LoreSoft.MathExpressions
         /// <returns>The result of the evaluated expression.</returns>
         /// <exception cref="ArgumentNullException">When expression is null or empty.</exception>
         /// <exception cref="ParseException">When there is an error parsing the expression.</exception>
-        public EvalResult Evaluate(string expression)
+        public void Evaluate(ExpressionData data)
         {
+            var expression = data.Expression.ToString();
             if (string.IsNullOrEmpty(expression))
                 throw new ArgumentNullException("expression");
 
@@ -154,7 +129,7 @@ namespace LoreSoft.MathExpressions
                 expression = expression.Substring(id + 1).Trim();
             }
 
-            _expressionReader = new StringReader(expression);
+            _expressionReader = new ExpressionHelper(data.Expression);
             _symbolStack.Clear();
             _nestedFunctionDepth = 0;
             _nestedGroupDepth = 0;
@@ -170,7 +145,9 @@ namespace LoreSoft.MathExpressions
             if (!string.IsNullOrEmpty(new_variable_name))
                 _variables[new_variable_name] = result;
 
-            return new EvalResult { Result = result, Regular = regular, Flag = _evalFlag };
+            data.Result = result;
+            data.Regular = regular;
+            data.Flag = _evalFlag;
         }
 
         /// <summary>Registers a function for the <see cref="MathEvaluator"/>.</summary>
@@ -224,6 +201,11 @@ namespace LoreSoft.MathExpressions
                 if (char.IsWhiteSpace(_currentChar))
                     continue;
 
+                if (TryReplace())
+                {
+                    _expressionReader.ModifyLast(_currentChar);
+                }
+
                 if (TryNumber(lastChar))
                 {
                     isNumOrV = true;
@@ -263,6 +245,24 @@ namespace LoreSoft.MathExpressions
             } while (_expressionReader.Peek() != -1);
 
             ProcessSymbolStack();
+        }
+
+        readonly Dictionary<char, char> charsToReplace = new Dictionary<char, char>()
+        {
+            { '、', '/' },
+            { '（', '(' },
+            { '）', ')' },
+        };
+
+        private bool TryReplace()
+        {
+            if (charsToReplace.TryGetValue(_currentChar, out char replacement))
+            {
+                _currentChar = replacement;
+                return true;
+            }
+
+            return false;
         }
 
         private bool TryConvert()
