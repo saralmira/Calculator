@@ -16,9 +16,13 @@ namespace LoreSoft.MathExpressions
         private static readonly Dictionary<char, int> operatorSymbols = new Dictionary<char, int>()
         {
             { '+', minPrecedence },
+            { 'гл', minPrecedence },
             { '-', minPrecedence },
+            { 'гн', minPrecedence },
             { '*', 2 },
+            { 'б┴', 2 },
             { '/', 2 },
+            { 'б┬', 2 },
             { '%', 2 },
             { '^', 3 },
         };
@@ -35,18 +39,22 @@ namespace LoreSoft.MathExpressions
             switch (@operator)
             {
                 case "+":
+                case "гл":
                     base.Evaluate = new MathEvaluate(Add);
                     _mathOperator = MathOperators.Add;
                     break;
                 case "-":
+                case "гн":
                     base.Evaluate = new MathEvaluate(Subtract);
                     _mathOperator = MathOperators.Subtract;
                     break;
                 case "*":
+                case "б┴":
                     base.Evaluate = new MathEvaluate(Multiple);
                     _mathOperator = MathOperators.Multiple;
                     break;
                 case "/":
+                case "б┬":
                     base.Evaluate = new MathEvaluate(Divide);
                     _mathOperator = MathOperators.Divide;
                     break;
